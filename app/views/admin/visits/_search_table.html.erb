@@ -1,0 +1,29 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Subject ID</th>
+      <th>Visit Type</th>
+      <th>Age</th>
+      <th>Diagnosis</th>
+      <th>Note</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% visit_list.each do |visit| %>
+      <tr>
+        <td><%= visit.human %></td>
+        <td><%= visit.visit_type %></td>
+        <td><%= visit.age %></td>
+        <td><%= visit.diagnosis %></td>
+        <td><%= visit.note %></td>
+        <td>
+          <%= link_to edit_admin_visit_path(visit) do %><span class='glyphicon glyphicon-pencil'></span><% end %>
+          <% if visit.human_samples.size == 0 %>
+            <%= link_to admin_visit_path(visit), :data => {:confirm => 'Want to delete this visit?'}, :method => :delete do %><span class='glyphicon glyphicon-trash'></span><% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

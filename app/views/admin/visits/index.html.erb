@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-time'></i> Visits</h3>
+  <p><%= link_to 'Add one new visit', new_admin_visit_path %>  | <%= link_to 'Add a batch', admin_visits_batch_new_path %> | <%= link_to 'Update a batch', admin_visits_batch_edit_path %></p>
+</div>
+
+<div align='center'>
+  <%= form_tag({:action => "search_results"}, :method => 'get') do %>
+    <%= select_tag :key, options_for_select(@ops, 'Subject ID') %> 
+    <%= text_field_tag :value %>
+    <%= submit_tag "Search", :class => 'btn btn-primary' %>
+  <% end %>
+</div>
+<hr>
+
+<%= render partial: "visit_table", locals: {visit_list: @visits } %> 

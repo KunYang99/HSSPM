@@ -1,0 +1,76 @@
+<div class="header-green">
+  <h3><i class='glyphicon glyphicon-object-align-bottom'></i> Projects</h3>
+</div>
+
+<div class="panel panel-purple">
+  <div class="panel-heading"><strong>Ongoing Projects</strong></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Title</th>
+      <th>PI</th>
+      <th>Members</th>
+      <th>Progress</th>
+      <th>Description</th>
+      <th>Datasets</th>
+    </tr>
+    <% @projects_ongoing.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.PI %></td>
+        <td><%= p.members %></td>
+        <td>
+          <div class="progress">
+            <% if  p.progress < 50 %>
+              <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: <%= p.progress %>%">
+              <% else %>
+                <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <%= p.progress %>%">
+                <% end %>
+                <%= p.progress %>%
+                </div>
+              </div>
+        </td>
+        <td><%= p.description %></td>
+        <% if p.datasets.size == 0 %>
+          <td>None</td>
+        <% else %>
+          <td><%= link_to 'View', fep_project_path(p) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+          </div>
+          <hr>
+
+          <div class="panel panel-grey2">
+            <div class="panel-heading"><strong>Finished Projects</strong></div>
+            <table class="table table-bordered table-striped table-condensed">
+              <tr>
+                <th>Title</th>
+                <th>PI</th>
+                <th>Members</th>
+                <th>Progress</th>
+                <th>Description</th>
+                <th>Datasets</th>
+              </tr>
+              <% @projects_finished.each do |p| %>
+                <tr>
+                  <td><%= p.name %></td>
+                  <td><%= p.PI %></td>
+                  <td><%= p.members %></td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success progress-bar-striped" style="width: <%= p.progress %>%">
+                        <%= p.progress %>%
+                      </div>
+                    </div>
+                  </td>
+                  <td><%= p.description %></td>
+                  <% if p.datasets.size == 0 %>
+                    <td>None</td>
+                  <% else %>
+                    <td><%= link_to 'View', fep_project_path(p) %></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </table>
+          </div>

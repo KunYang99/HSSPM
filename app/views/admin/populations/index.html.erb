@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-object-align-bottom'></i> Populations</h3>
+  <p>Subject population, e.g. control, SZ</p>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @populations.each do |population| %>
+      <tr>
+        <td><%= population.name %></td>
+        <td><%= population.note %></td>
+        <td><%= link_to edit_admin_population_path(population.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to 'Add new population', new_admin_population_path, :class => 'btn btn-primary' %>

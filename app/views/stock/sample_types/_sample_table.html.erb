@@ -1,0 +1,51 @@
+<div class="table-responsive">
+  <table class="tablesorter tablesorter-blue" id='sortable-table'>
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>Sample ID</th>
+        <th>Type</th>
+        <th>Subject ID</th>
+        <th>Visit</th>
+        <th>Amount</th>
+        <th>Concentration</th>
+        <th>Location</th>
+        <th>Source</th>
+        <th>Prepared by</th>
+        <th>Created on</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% sample_list.each do |s| %>
+        <tr>
+          <td>
+          <% if current_user.has_fav_sample?(s.id) %>
+            <span class="glyphicon glyphicon-heart" style='color:red;'></span>
+          <% else %>
+            <%= link_to stock_favorites_path(:user_id => current_user.id, :sample_id => s.id, :type => 'sample'), :method => :post do%><span class='glyphicon glyphicon-heart'></span><% end %>
+          <% end %>
+            <% if current_user.has_cart?(s.id) %>
+              <span class="glyphicon glyphicon-ok" style='color:green;'></span>
+            <% else %>
+              <%= link_to stock_carts_path(:user_id => current_user.id, :sample_id => s.id), :method => :post do%><span class='glyphicon glyphicon-shopping-cart'></span><% end %>
+            <% end %>
+          </td>
+          <td><%= link_to s.accession, stock_human_sample_path(s) %></td>
+          <td><%= s.sample_type %></td>
+          <td><%= link_to s.human, stock_human_path(s.human) %></td>
+          <td><%= s.visit.visit_type %></td>
+          <td><%= s.amount %></td>
+          <td><%= s.concentration %></td>
+          <td><%= s.main_location %>: <%= s.sub_location %></td>
+          <td><%= s.source %></td>
+          <td><%= s.prepared_by %></td>
+          <td><%= s.created_on %></td>
+          <td><%= s.note %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

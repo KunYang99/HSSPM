@@ -1,0 +1,17 @@
+<%= CSV.generate do |csv|
+
+  csv << ['Sample ID', 'Type', 'Subject ID', 'Visit', 'Location', 'Source']
+
+  @carts.each do |ct|
+    s = ct.human_sample
+    new_row = []
+    new_row << s.accession
+    new_row << s.sample_type.name
+    new_row << s.human.accession
+    new_row << s.visit_type.value
+    new_row << "#{s.main_location}: #{s.sub_location}"
+    new_row << s.source
+    csv << new_row
+  end
+
+end.html_safe %>

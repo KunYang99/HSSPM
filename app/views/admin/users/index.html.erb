@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-list-alt'></i> Members</h3>
+  <%= link_to 'Add new memeber', new_admin_user_path %>
+</div>
+
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Administrators</a></li>
+    <li role="presentation"><a href="#sample" aria-controls="sample" role="tab" data-toggle="tab">Sample DB Members</a></li>
+    <li role="presentation"><a href="#clinic" aria-controls="clinic" role="tab" data-toggle="tab">Clinical DB Members</a></li>
+    <li role="presentation"><a href="#fep" aria-controls="fep" role="tab" data-toggle="tab">FEP DB Members</a></li>
+    <li role="presentation"><a href="#inactive" aria-controls="inactive" role="tab" data-toggle="tab">Previous Members</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="admin">
+      <%= render partial: "user_table", locals: {user_list: @admin} %> 
+    </div>
+    <div role="tabpanel" class="tab-pane" id="sample">
+      <%= render partial: "user_table", locals: {user_list: @sample_users} %> 
+    </div>
+    <div role="tabpanel" class="tab-pane" id="clinic">
+      <%= render partial: "user_table", locals: {user_list: @clinic_users} %> 
+    </div>
+    <div role="tabpanel" class="tab-pane" id="fep">
+      <%= render partial: "user_table", locals: {user_list: @fep_users} %> 
+    </div>
+    <div role="tabpanel" class="tab-pane" id="inactive">
+      <%= render partial: "user_table", locals: {user_list: @disabled} %> 
+    </div>
+  </div>
+
+</div>

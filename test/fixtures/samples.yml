@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sample_type: one
+  amount: MyString
+  unit: MyString
+  created_on: 2017-05-16
+  main_location: one
+  sub_location: MyString
+  subject_type: one
+  subject_id: 1
+
+two:
+  sample_type: two
+  amount: MyString
+  unit: MyString
+  created_on: 2017-05-16
+  main_location: two
+  sub_location: MyString
+  subject_type: two
+  subject_id: 1

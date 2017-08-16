@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-pencil'></i> Edit human samples</h3>
+</div>
+<%= simple_form_for(@human_sample, :url => admin_human_samples_confirm_update_path, html: { multipart: true }) do |f| %>
+  <%= file_field_tag :csv_file %>
+  <small class='text-danger'>Only comma-delimited or tab-delimited text file (csv, txt) allowed</small>
+  <br><br>
+
+  <%= f.submit 'Update Human Sample', :class => 'btn btn-primary' %>
+
+  <hr />
+  <p class='text-danger'>Important: Must provide sample id</p>
+  <p>The uploaded file can only have the following columns:</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed">
+      <tr>
+        <th>Sample ID</th>
+        <th>Type</th>
+        <th>Subject ID</th>
+        <th>Visit Type</th>
+        <th>Original Amount</th>
+        <th>Available Amount</th>
+        <th>Concentration</th>
+        <th>Main Location</th>
+        <th>Sub Location</th>
+        <th>Source</th>
+        <th>Prepared_by</th>
+        <th>Created_on</th>
+        <th>Note</th>
+      </tr>
+      <tr>
+        <td>Must already in database</td>
+        <td>Allowed value: <%= SampleType.select(:name).join(' or ') %></td>
+        <td>Must already in database</td>
+        <td>Allowed value: <%= VisitType.select(:value).join(' or ') %></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>Allowed value: <%= MainLocation.select(:name).join(' or ') %></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>Must in format xxxx-xx-xx, e.g. 2012-03-25</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+  <i class='glyphicon glyphicon-download-alt'></i> <%= link_to 'Download Template', :action => :send_template %>
+
+<% end %>

@@ -1,0 +1,43 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed" id='my-table'>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>ID</th>
+        <th>Other IDs</th>
+        <th>Cohort</th>
+        <th>Gender</th>
+        <th>Race</th>
+        <th>Population</th>
+        <th>Note</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% subject_list.each do |s| %>
+        <% if s.status.try(:name) == 'Invalid' %>
+          <tr class='danger'>
+          <% else %>
+            <tr>
+            <% end %>
+            <td><%= s.status %></td>
+            <td><%= s.accession %></td>
+            <td><%= s.other_ids %></td>
+            <td><%= s.to_cohorts %></td>
+            <td><%= s.gender %></td>
+            <td><%= s.to_races %></td>
+            <td><%= s.population %></td>
+            <td><%= s.note %></td>
+            <td>
+              <%= link_to edit_admin_human_path(s) do %><span class='glyphicon glyphicon-pencil'></span><% end %>
+              <% if s.visits.size == 0 %>
+                <%= link_to admin_human_path(s), :data => {:confirm => 'Want to delete this subject?'}, :method => :delete do %><span class='glyphicon glyphicon-trash'></span><% end %>
+              <% end %>
+            </td>
+            </tr>
+          <% end %>
+    </tbody>
+  </table>
+</div>
+

@@ -1,0 +1,17 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-tint'></i> Human Samples</h3>
+</div>
+
+<p><%= link_to stock_human_samples_path(format: "csv") do %><i class='glyphicon glyphicon-download-alt'></i> Download all the human samples<% end %></p>
+
+<div id='input-box'>
+  <%= form_for_filterrific @filterrific do |f| %>
+    Search <%= f.text_field :search_query, class: 'filterrific-periodically-observed' %>
+  &nbsp;&nbsp;&nbsp;Type <%= f.select :with_type, @filterrific.select_options[:with_type], {include_blank: '- Any -'} %>
+&nbsp;&nbsp;&nbsp;Main Location <%= f.select :with_location, @filterrific.select_options[:with_location], {include_blank: '- Any -'} %>
+&nbsp;&nbsp;&nbsp;<%= link_to 'Reset filters', reset_filterrific_url %>
+<% end %>
+</div>
+
+<br />
+<%= render partial: "list", locals: {sample_list: @human_samples } %> 

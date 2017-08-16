@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-duplicate'></i> Transfers</h3>
+  <p><%= link_to 'Add one transfer', new_admin_transfer_path %> | <%= link_to 'Add a batch of transfers', admin_transfers_batch_new_path %></p>
+</div>
+
+<div align='center'>
+  <%= form_tag({:action => "search_results"}, :method => 'get') do %>
+    <%= select_tag :key, options_for_select(@ops, 'Sample') %> 
+    <%= text_field_tag :value %>
+    <%= submit_tag "Search", :class => 'btn btn-primary' %>
+  <% end %>
+</div>
+<hr>
+
+<%= will_paginate @transfers, :class => 'digg_pagination' %>
+<br />
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Sample</th>
+      <th>Transfer From</th>
+      <th>Transfer To</th>
+      <th>Amount</th>
+      <th>Note</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @transfers.each do |transfer| %>
+      <tr>
+        <td><%= transfer.human_sample %></td>
+        <td><%= transfer.trans_from %></td>
+        <td><%= transfer.trans_to %></td>
+        <td><%= transfer.amount %></td>
+        <td><%= transfer.note %></td>
+        <td>
+          <%= link_to edit_admin_transfer_path(transfer.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %>
+          <%= link_to admin_transfer_path(transfer), :data => {:confirm => 'Want to delete this transfer?'}, :method => :delete do %><span class='glyphicon glyphicon-trash'></span><% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

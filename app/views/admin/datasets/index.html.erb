@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-list-alt'></i> Datasets</h3>
+  <p>Experimental or analysis results</p>
+</div>
+
+<%= link_to 'Add new dataset', new_admin_dataset_path %>
+<div align='center'>
+  <%= form_tag({:action => "search_results"}, :method => 'get') do %>
+    <%= select_tag :key, options_for_select(@ops, 'Subject ID') %> 
+    <%= text_field_tag :value %>
+    <%= submit_tag "Search", :class => 'btn btn-primary' %>
+  <% end %>
+</div>
+<hr>
+
+<%= render partial: "dataset_table", locals: {dataset_list: @datasets } %> 

@@ -1,0 +1,14 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-pencil'></i> Edit Account</h3>
+</div>
+
+<%= simple_form_for(current_user) do |f| %>
+  <%= f.input :name, :input_html => { :class => :wd300 } %>
+  <%= f.input :phone, :input_html => { :class => :wd300 } %>
+  <%= f.input :email, :input_html => { :class => :wd300 } %>
+  <%= f.input :username, :input_html => { :class => :wd300 } %>
+  <%= f.input :password, :input_html => { :class => :wd300 } %>
+  <%= f.input :password_confirm, :input_html => { :class => :wd300 } %>
+  <%= recaptcha_tags %><br>
+  <%= f.submit :class => 'btn btn-primary' %>
+<% end %>

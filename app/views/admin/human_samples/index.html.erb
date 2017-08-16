@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-list-alt'></i> Human Samples</h3>
+  <%= link_to 'Add one sample', new_admin_human_sample_path %> | 
+  <%= link_to 'Add a batch', admin_human_samples_batch_new_path %> |
+  <%= link_to 'Edit a batch', admin_human_samples_batch_edit_path %>
+</div>
+
+<div align='center'>
+  <%= form_tag({:action => "search_results"}, :method => 'get') do %>
+    <%= select_tag :key, options_for_select(@ops, 'Type') %> 
+    <%= text_field_tag :value %>
+    <%= submit_tag "Search", :class => 'btn btn-primary' %>
+  <% end %>
+</div>
+<hr>
+
+<%= render partial: "sample_table", locals: {sample_list: @samples } %> 

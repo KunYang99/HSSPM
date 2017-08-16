@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-plus'></i> Add new visits</h3>
+</div>
+<%= simple_form_for(@visit, :url => admin_visits_confirm_create_path, html: { multipart: true }) do |f| %>
+  <%= file_field_tag :csv_file %>
+  <small class='text-danger'>Only comma-delimited or tab-delimited text file (csv, txt) allowed</small>
+  <br><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+
+  <hr />
+  <p class='text-danger'>Important: Must provide Subject ID and Visit Type</p>
+  <p>The uploaded file must and can only have the following columns:</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed">
+      <tr>
+        <th>Subject ID</th>
+        <th>Visit Type</th>
+        <th>Age</th>
+        <th>Diagnosis</th>
+        <th>Note</th>
+      </tr>
+      <tr>
+        <td>Subject must already in database</td>
+        <td>Allowed value: <%= VisitType.select(:value).join(' or ') %></td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+  <i class='glyphicon glyphicon-download-alt'></i> <%= link_to 'Download Template', :action => :send_template %>
+
+<% end %>

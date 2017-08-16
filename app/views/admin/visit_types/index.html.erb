@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-time'></i> Visit Types</h3>
+  <p>Patient visit types, e.g 1st year, 2nd year</p>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Value</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @visit_types.each do |visit_type| %>
+      <tr>
+        <td><%= visit_type.value %></td>
+        <td><%= link_to edit_admin_visit_type_path(visit_type.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to 'Add new visit type', new_admin_visit_type_path, :class => 'btn btn-primary' %>

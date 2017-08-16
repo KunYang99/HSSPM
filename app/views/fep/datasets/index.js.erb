@@ -1,0 +1,4 @@
+<% js = escape_javascript(
+  render(partial: "dataset_table", locals: {dataset_list: @datasets }) 
+) %>
+$("#filterrific_results").html("<%= js %>");

@@ -1,0 +1,22 @@
+<ul class="nav navbar-nav">
+
+  <li>
+    <%= link_to fep_root_path do %>
+      <i class="glyphicon glyphicon-home"></i>
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to root_path do %>
+      <i class="glyphicon glyphicon-th"></i>
+    <% end %>
+  </li>
+
+  <!-- project menu -->
+  <li><%= link_to 'Projects', fep_projects_path %></li>
+
+  <!-- dataset menu -->
+  <li><%= link_to 'Datasets', fep_datasets_path %></li>
+
+</ul>
+

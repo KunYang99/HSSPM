@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-duplicate'></i> Materials</h3>
+  <p>Exprimental protocols, Instruction on how to retrieve samples, etc.</p>
+</div>
+
+<p><%= link_to 'Add new material', new_admin_material_path %></p>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Title</th>
+      <th>File</th>
+      <th>Description</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @materials.each do |material| %>
+      <tr>
+        <td><%= link_to material.title, material.file.url %></td>
+        <td><%= link_to material.file_identifier, material.file.url %></td>
+        <td><%= material.note %></td>
+        <td>
+          <%= link_to edit_admin_material_path(material.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %>
+          <%= link_to admin_material_path(material), :data => {:confirm => 'Want to delete this material?'}, :method => :delete do %><span class='glyphicon glyphicon-trash'></span><% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

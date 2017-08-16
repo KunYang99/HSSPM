@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-pencil'></i> Edit human subject</h3>
+</div>
+<%= simple_form_for([:admin,@human]) do |f| %>
+  <%= f.input :accession, :input_html => { :class => :wd300 } %>
+  <%= f.input :other_ids, :input_html => { :class => :wd300, :value => @other_ids }, hint: "One id per line" %>
+  <%= f.association :gender, :input_html => { :class => :wd300 } %>
+  <%= f.association :races, :as => :check_boxes %>
+  <%= f.association :cohorts, :as => :check_boxes %>
+  <%= f.association :population, :input_html => { :class => :wd300 } %>
+  <%= f.association :status, :input_html => { :class => :wd300 } %>
+  <%= f.input :note, :input_html => { :class => :wd300 } %>
+  
+  <%= recaptcha_tags %><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,72 @@
+<div class="header-green">
+  <h3><i class='glyphicon glyphicon-home'></i> Welcome to Project Portal</h3>
+</div>
+
+<div class="panel panel-blue">
+  <div class="panel-heading"><strong>Ongoing Projects</strong></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Title</th>
+      <th>PI</th>
+      <th>Members</th>
+      <th>Progress</th>
+    </tr>
+    <% @projects.each do |p| %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.PI %></td>
+        <td><%= p.members %></td>
+        <td>
+          <div class="progress">
+            <% if  p.progress < 50 %>
+              <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: <%= p.progress %>%">
+              <% else %>
+                <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <%= p.progress %>%">
+                <% end %>
+                <%= p.progress %>%
+                </div>
+              </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+          </div>
+          <hr>
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class='col-sm-6'>
+                <div class="panel panel-purple">
+                  <div class="panel-heading"><strong>Projects</strong></div>
+                  <div class="panel-body" align='center'>
+                    <%= form_tag({:controller => 'projects', :action => "search_results"}, :method => 'get') do %>
+                      <%= select_tag :key, options_for_select(@ops_project, 'Title') %> 
+                      <%= text_field_tag :value %>
+                      <%= submit_tag "Search", :class => 'btn btn-primary' %>
+                    <% end %>
+                    <hr class='light'>
+                    <div align='left'>
+                      <b>Summary:</b> We have <%= @project_cnt %> projects 
+                    </div>
+                  </div>
+                </div>      
+              </div>
+
+              <div class='col-sm-6'>
+                <div class="panel panel-choc">
+                  <div class="panel-heading"><strong>DataSets</strong></div>
+                  <div class="panel-body" align='center'>
+                    <%= form_tag({:controller => 'datasets', :action => "search_results"}, :method => 'get') do %>
+                      <%= select_tag :key, options_for_select(@ops_data, 'Subject ID') %> 
+                      <%= text_field_tag :value %>
+                      <%= submit_tag "Search", :class => 'btn btn-primary' %>
+                    <% end %>
+                    <hr class='light'>
+                    <div align='left'>
+                      <b>Summary:</b> We have <%= @data_cnt %> datasets 
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>      
+          </div>      

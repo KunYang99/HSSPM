@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-object-align-bottom'></i> Projects</h3>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Name</th>
+      <th>Leader</th>
+      <th>Members</th>
+      <th>Progress</th>
+      <th>Description</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.PI %></td>
+        <td><%= project.members %></td>
+        <td><%= project.progress %>%</td>
+        <td><%= project.description %></td>
+        <td><%= link_to edit_admin_project_path(project.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to 'Add new project', new_admin_project_path, :class => 'btn btn-primary' %>

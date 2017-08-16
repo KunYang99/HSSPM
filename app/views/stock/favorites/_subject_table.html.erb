@@ -1,0 +1,38 @@
+<div class="panel panel-info">
+  <div class="panel-heading"><b>Human Subjects</b></div>
+  <table class="table table-bordered table-striped table-condensed" id='my-table'>
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>ID</th>
+        <th>Other IDs</th>
+        <th>Cohort</th>
+        <th>Gender</th>
+        <th>Race</th>
+        <th>Population</th>
+        <th>Note</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% subject_list.each do |sl|; s = sl.human %>
+      <% if s.status.try(:name) == 'Invalid' %>
+        <tr class='danger'>
+        <% else %>
+          <tr>
+          <% end %>
+          <td><%= s.status %></td>
+          <td><%= link_to s.accession, stock_human_path(s) %></td>
+          <td><%= s.other_ids %></td>
+          <td><%= s.to_cohorts %></td>
+          <td><%= s.gender %></td>
+          <td><%= s.to_races %></td>
+          <td><%= s.population %></td>
+          <td><%= s.note %></td>
+          <td><%= link_to stock_favorite_path(:id => sl.id, :type => 'subject'), :data => {:confirm => 'Want to delete this item from your favorites?'}, :method => :delete do %><span class='glyphicon glyphicon-trash'></span><% end %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

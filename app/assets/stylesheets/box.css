@@ -1,0 +1,88 @@
+.panel-green .panel-heading {
+  background-color: #116466;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-green .panel-body {
+  background-color: #D1E8E2;
+}
+.panel-blue .panel-heading {
+  background-color: #2b6785;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-blue .panel-body {
+  background-color: #e7f2f7;
+}
+.panel-purple .panel-heading {
+  background-color: #755c6e;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-purple .panel-body {
+  background-color: #e7e0e5;
+}
+.panel-grey2 .panel-heading {
+  background-color: #3b3a30;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-grey2 .panel-body {
+  background-color: #f4f4f2;
+}
+.panel-meat .panel-heading {
+  background-color: #D4A59A;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-meat .panel-body {
+  background-color: #F3E0DC;
+}
+.panel-choc .panel-heading {
+  background-color: #b5a397;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-choc .panel-body {
+  background-color: #f6f1ed;
+}
+.panel-default .panel-heading-green {
+  background-color: #116466;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-default .panel-heading-yellow {
+  background-color: #D9B08C;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-default .panel-heading-gray {
+  background-color: #2c3531;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-default .panel-heading-purple {
+  background-color: #400040;
+  color: #fff;
+  padding: 5px 5px 5px 10px;
+}
+.panel-grey .panel-heading { 
+  background-color: #3b3a30;
+  color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.panel-grey .panel-body {
+  background-color: #f4f4f2;
+}
+.panel-grey .panel-footer {
+  background-color: #b6b5a6;
+}
+#input-box {
+  border: 1px solid #cccccc;
+  padding: 5px;
+}
+#simple-box {
+  border: 1px solid #000;
+  padding: 15px;
+}

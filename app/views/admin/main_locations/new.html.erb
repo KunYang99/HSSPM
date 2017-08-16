@@ -1,0 +1,11 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-plus'></i> Add main location</h3>
+</div>
+<%= simple_form_for([:admin,@main_location]) do |f| %>
+  <%= f.input :name, :input_html => { :class => :wd300 } %>
+  <%= f.input :location, :input_html => { :class => :wd300 } %>
+  <%= f.input :note, :input_html => { :class => :wd300 } %>
+  <%= recaptcha_tags %><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>

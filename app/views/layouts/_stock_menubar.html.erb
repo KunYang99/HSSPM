@@ -1,0 +1,53 @@
+<ul class="nav navbar-nav">
+
+  <li>
+    <%= link_to stock_root_path do %>
+      <i class="glyphicon glyphicon-home"></i>
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to root_path do %>
+      <i class="glyphicon glyphicon-th"></i>
+    <% end %>
+  </li>
+
+  <!-- Human Subject menu -->
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Subjects
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'List All', stock_humen_path %></li>
+      <li><%= link_to 'Visit Log', stock_visits_path %></li>
+      <li class="divider"></li>
+      <% Cohort.all.each do |ch| %>
+        <li><%= link_to ch.name, stock_cohort_path(ch) %></li>
+      <% end %>
+    </ul>
+  </li>
+
+  <!-- Sample menu -->
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Samples
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'List All', stock_human_samples_path %></li>
+      <li><%= link_to 'Batch Search', stock_human_samples_batch_search_path %></li>
+      <li class="divider"></li>
+      <% SampleType.all.each do |st| %>
+        <li><%= link_to st.name, stock_sample_type_path(st) %></li>
+      <% end %>
+    </ul>
+  </li>
+
+  <li><%= link_to 'Materials', stock_materials_path %></li>
+
+</ul>
+
+<ul class="nav navbar-nav navbar-right">
+  <li><%= link_to stock_carts_path do %><span class="glyphicon glyphicon-shopping-cart"></span><% end %></li>
+  <li><%= link_to stock_favorites_path do %><span class="glyphicon glyphicon-heart"></span><% end %></li>
+
+</ul>

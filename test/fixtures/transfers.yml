@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  human_sample: one
+  type: 
+  trans_to: MyString
+  amount: MyString
+  note: MyText
+
+two:
+  human_sample: two
+  type: 
+  trans_to: MyString
+  amount: MyString
+  note: MyText

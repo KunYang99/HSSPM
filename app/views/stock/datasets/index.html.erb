@@ -1,0 +1,14 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-list-alt'></i> Datasets</h3>
+</div>
+
+<div id='input-box'>
+  <%= form_for_filterrific @filterrific do |f| %>
+    Search <%= f.text_field :search_query, class: 'filterrific-periodically-observed' %>
+  &nbsp;&nbsp;&nbsp;Project <%= f.select :with_project, @filterrific.select_options[:with_project], {include_blank: '- Any -'} %>
+  &nbsp;&nbsp;&nbsp;<%= link_to 'Reset filters', reset_filterrific_url %>
+<% end %>
+</div>
+
+<br />
+<%= render partial: "dataset_table", locals: {dataset_list: @datasets } %> 

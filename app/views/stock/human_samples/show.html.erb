@@ -1,0 +1,71 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-tint'></i> Sample <%= @sample %></h3>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading"><b>Basic Info</b></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>&nbsp;</th>
+      <th>Sample ID</th>
+      <th>Type</th>
+      <th>Subject ID</th>
+      <th>Visit</th>
+      <th>Original Amount</th>
+      <th>Available Amount</th>
+      <th>Concentration</th>
+      <th>Location</th>
+      <th>Source</th>
+      <th>Prepared by</th>
+      <th>Created on</th>
+      <th>Note</th>
+    </tr>
+
+    <tr>
+      <td>
+        <% if current_user.has_fav_sample?(@sample.id) %>
+          <span class="glyphicon glyphicon-heart" style='color:red;'></span>
+        <% else %>
+          <%= link_to stock_favorites_path(:user_id => current_user.id, :sample_id => @sample.id, :type => 'sample'), :method => :post do%><span class='glyphicon glyphicon-heart'></span><% end %>
+        <% end %>
+        <% if current_user.has_cart?(@sample.id) %>
+          <span class="glyphicon glyphicon-ok" style='color:green;'></span>
+        <% else %>
+          <%= link_to stock_carts_path(:user_id => current_user.id, :sample_id => @sample.id), :method => :post do%><span class='glyphicon glyphicon-shopping-cart'></span><% end %>
+        <% end %>
+      </td>
+      <td><%= link_to @sample.accession, stock_human_sample_path(@sample) %></td>
+      <td><%= @sample.sample_type %></td>
+      <td><%= link_to @sample.human, stock_human_path(@sample.human) %></td>
+      <td><%= @sample.visit.visit_type %></td>
+      <td><%= @sample.amount %></td>
+      <td><%= @sample.avail_amount %></td>
+      <td><%= @sample.concentration %></td>
+      <td><%= @sample.main_location %>: <%= @sample.sub_location %></td>
+      <td><%= @sample.source %></td>
+      <td><%= @sample.prepared_by %></td>
+      <td><%= @sample.created_on %></td>
+      <td><%= @sample.note %></td>
+    </tr>
+  </table>
+</div>
+
+<div class="panel panel-success">
+  <div class="panel-heading"><b>Transfer History</b></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Transfer From</th>
+      <th>Transfer To</th>
+      <th>Amount</th>
+      <th>Note</th>
+    </tr>
+    <% @sample.transfers.each do |t| %>
+      <tr>
+        <td><%= t.trans_from %></td>
+        <td><%= t.trans_to %></td>
+        <td><%= t.amount %></td>
+        <td><%= t.note %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

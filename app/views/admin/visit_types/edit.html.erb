@@ -1,0 +1,9 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-pencil'></i> Edit visit type</h3>
+</div>
+<%= simple_form_for([:admin,@visit_type]) do |f| %>
+  <%= f.input :value, hint: 'short meaningful text, e.g. 1st year, 2nd visit', :input_html => { :class => :wd300 } %>
+  <%= recaptcha_tags %><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>

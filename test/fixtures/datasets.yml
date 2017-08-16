@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  human: one
+  title: MyString
+  file: MyString
+  contributors: MyText
+  pi: MyString
+  note: MyString
+
+two:
+  human: two
+  title: MyString
+  file: MyString
+  contributors: MyText
+  pi: MyString
+  note: MyString

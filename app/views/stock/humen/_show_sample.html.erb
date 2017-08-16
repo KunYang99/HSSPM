@@ -1,0 +1,32 @@
+<div class="panel panel-success">
+  <div class="panel-heading"><b>Samples</b></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Sample ID</th>
+      <th>Type</th>
+      <th>Visit</th>
+      <th>Amount</th>
+      <th>Concentration</th>
+      <th>Location</th>
+      <th>Source</th>
+      <th>Prepared by</th>
+      <th>Created on</th>
+      <th>Note</th>
+    </tr>
+
+    <% @human.human_samples.each do |s| %>
+      <tr>
+        <td><%= link_to s.accession, stock_human_sample_path(s) %></td>
+        <td><%= s.sample_type %></td>
+        <td><%= s.visit.visit_type %></td>
+        <td><%= s.amount %></td>
+        <td><%= s.concentration %></td>
+        <td><%= s.main_location %>: <%= s.sub_location %></td>
+        <td><%= s.source %></td>
+        <td><%= s.prepared_by %></td>
+        <td><%= s.created_on %></td>
+        <td><%= s.note %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

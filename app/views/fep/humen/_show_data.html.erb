@@ -1,0 +1,24 @@
+<div class="panel panel-danger">
+  <div class="panel-heading"><b>Data</b></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Title</th>
+      <th>File</th>
+      <th>Availability</th>
+      <th>Contributors</th>
+      <th>PI</th>
+      <th>Note</th>
+    </tr>
+
+    <% @human.datasets.each do |s| %>
+      <tr>
+        <td><%= s.title %></td>
+        <td><%= link_to s.file_identifier, s.file.url %></td>
+        <td><%= s.availability %></td>
+        <td><%= s.contributors %></td>
+        <td><%= s.pi %></td>
+        <td><%= s.note %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

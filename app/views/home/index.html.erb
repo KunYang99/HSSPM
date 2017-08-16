@@ -1,0 +1,88 @@
+<div class="header-grey">
+  <h3><i class='glyphicon glyphicon-th'></i> Dashboard</h3>
+</div>
+
+<% if current_user.nil? %>
+  <div align='center'>
+    <% if @user_cnt == 0 %>
+      <h3>No user registered. Please add one administrator to Postgresql, then the administrator can add new members through administration panel </h3>
+    <% end %>
+    <div class="panel panel-grey" style="width:400px">
+      <div class="panel-heading"><b>PLEASE SIGN IN</b></div>
+      <div class="panel-body">
+        <%= simple_form_for(:sessions, :url => sessions_path) do |f| %>
+          <%= f.input :username %><br>
+          <%= f.input :password %><br>
+          <%= recaptcha_tags %><br>
+          <%= f.submit 'Log in', class: 'btn btn-danger' %><br>
+        <% end %>
+      </div>
+      <div class="panel-footer">
+        <b>OR</b> <%= link_to image_tag('google_singin.png'), "/auth/google_oauth2" %>
+    </div>
+    </div>
+  </div>
+<% else %>
+
+  <br />
+  <div id='simple-box'>
+    <div class="row">
+      <div class='col-sm-5'>
+        <%= link_to users_path, :class => 'btn btn-user btn-block' do %>
+          <i class='glyphicon glyphicon-user'></i> Manage Your Account
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <div id='simple-box'>
+    <div class="row">
+      <% cnt=0; if current_user.member?('sample'); cnt += 1 %>
+      <div class='col-sm-5'>
+        <%= link_to stock_root_path, :class => 'btn btn-sample btn-block' do %>
+          <i class='glyphicon glyphicon-tint'></i> Sample Stock Portal
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if current_user.member?('project'); cnt += 1 %>
+      <div class='col-sm-5'>
+        <%= link_to fep_root_path, :class => 'btn btn-fep btn-block' do %>
+          <i class='glyphicon glyphicon-screenshot'></i> Project Portal
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if cnt == 2; cnt = 0 %>
+      </div>
+      <br />
+      <div class="row">
+      <% end %>
+      <% if current_user.member?('clinic'); cnt += 1 %>
+        <div class='col-sm-5'>
+          <%= link_to clinic_root_path, :class => 'btn btn-clinic btn-block' do %>
+            <i class='glyphicon glyphicon-duplicate'></i> Clinical Data Portal
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if cnt == 2; cnt = 0 %>
+        </div>
+        <br />
+        <div class="row">
+        <% end %>
+        <% if current_user.member?('admin') %>
+          <div class='col-sm-5'>
+            <%= link_to admin_root_path, :class => 'btn btn-admin btn-block' do %>
+              <i class='glyphicon glyphicon-cog'></i> Administration Portal
+            <% end %>
+          </div>
+        <% end %>
+        </div>
+
+  </div>      
+  </div>      
+  </div>      
+
+<% end %>

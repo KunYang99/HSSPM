@@ -1,0 +1,47 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-eye-open'></i> Check if the system interpret your file correctly</h3>
+</div>
+
+<% if !@errors.blank? %>
+  <p class='text-danger'><strong><%= @errors.size %> ERRORs found! Please fix it before submitting to system</strong></p>
+  <ol>
+    <% @errors.each do |e| %>
+      <li><%= e %></li>
+    <% end %>
+  </ol>
+  <p><%= link_to 'Go back', admin_humen_batch_new_path, :class => 'btn btn-primary' %></p>
+<% else %>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed">
+      <tr>
+        <th>Status</th>
+        <th>ID</th>
+        <th>Other IDs</th>
+        <th>Cohort</th>
+        <th>Gender</th>
+        <th>Race</th>
+        <th>Population</th>
+        <th>Note</th>
+      </tr>
+      <% CSV.foreach(@csv_file, headers: true, row_sep: :auto, :col_sep => @this_sep) do |row| %>
+        <% dat = row.to_hash %>
+        <tr>
+          <td><%= dat['Status'] %></td>
+          <td><%= dat['ID'] %></td>
+          <td><%= dat['Other IDs'] %></td>
+          <td><%= dat['Cohort'] %></td>
+          <td><%= dat['Gender'] %></td>
+          <td><%= dat['Race'] %></td>
+          <td><%= dat['Population'] %></td>
+          <td><%= dat['Note'] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  
+  <p>
+  <%= link_to 'Go back', admin_humen_batch_new_path, :class => 'btn btn-danger' %>
+  <%= link_to 'Create', {:action => :batch_create, :file =>@csv_file}, :class => 'btn btn-success', :method => :post %>
+  </p>
+<% end %>

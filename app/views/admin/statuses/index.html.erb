@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-leaf'></i> Statuses</h3>
+  <p>Subject status, e.g. valid, excluded</p>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @statuses.each do |status| %>
+      <tr>
+        <td><%= status.name %></td>
+        <td><%= status.note %></td>
+        <td><%= link_to edit_admin_status_path(status.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to 'Add new status', new_admin_status_path, :class => 'btn btn-primary' %>

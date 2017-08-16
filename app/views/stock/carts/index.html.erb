@@ -1,0 +1,16 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-shopping-cart'></i> Samples to retrieve or return</h3>
+</div>
+
+<%= render partial: "cart_table", locals: {cart_list: @carts } %> 
+
+<%= link_to 'Download Submit Form', stock_carts_path(format: "csv"), :class => 'btn btn-primary' %>
+
+<hr>
+<h4>How to request samples</h4>
+<ol>
+  <li>Add samples you need to shopping cart</li>
+  <li>Download the submit form</li>
+  <li>Contact lab manager to pick up or return samples</li>
+</ol>
+

@@ -1,0 +1,21 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-plus'></i> Add new human sample</h3>
+</div>
+
+<%= simple_form_for([:admin,@human_sample]) do |f| %>
+  <%= f.input :accession, :input_html => { :class => :wd300 }, :label => 'Sample ID' %>
+  <%= f.association :sample_type, :input_html => { :class => :wd300 } %>
+  <%= f.association :visit, :input_html => { :class => :wd300 } %>
+  <%= f.input :amount, :input_html => { :class => :wd300 }, :label => 'Original Amount' %>
+  <%= f.input :avail_amount, :input_html => { :class => :wd300 }, :label => 'Available Amount' %>
+  <%= f.input :concentration, :input_html => { :class => :wd300 } %>
+  <%= f.input :source, :input_html => { :class => :wd300 } %>
+  <%= f.association :main_location, :input_html => { :class => :wd300 } %>
+  <%= f.input :prepared_by, :input_html => { :class => :wd300 }, :hint => "The person or institute which prepared the sample" %>
+  <%= f.input :created_on, :input_html => { :class => :wd300 }, :hint => "Date when sample retrieved" %>
+  <%= f.input :note, :input_html => { :class => :wd300 } %>
+  
+  <%= recaptcha_tags %><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,20 @@
+<div class="header-blue">
+  <h3><span class='glyphicon glyphicon-user'></span> Account Info</h3>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name</dt>
+  <dd><%= current_user.name %></dd>
+  <dt>Gmail Account</dt>
+  <dd class="clearfix"><%= current_user.gmail %></dd>
+  <dt>Username</dt>
+  <dd class="clearfix"><%= current_user.username %></dd>
+  <dt>Phone</dt>
+  <dd class="clearfix"><%= current_user.phone %></dd>
+  <dt>Email</dt>
+  <dd class="clearfix"><%= current_user.email %></dd>
+  <dt>Groups</dt>
+  <dd><%= current_user.to_groups %></dd>
+</dl>
+<%= link_to 'Edit', edit_user_path(current_user), :class => 'btn btn-primary' %>
+<br />

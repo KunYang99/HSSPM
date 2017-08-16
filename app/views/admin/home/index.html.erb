@@ -1,0 +1,118 @@
+<div class="page-header">
+  <h3><i class="glyphicon glyphicon-cog"></i> Welcome back, administrator</h3>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class='col-xs-6 col-md-6'>
+      <div class="panel panel-default">
+        <div class="panel-heading-green"><b>What we have now</b></div>
+        <div class="panel-body">
+          <p><strong>* Members</strong> <span class="badge"><%= @user_cnt %></span></p>
+          <p>--- 
+          <% @groups.each do |g| %>
+            <%= g.name %> <span class="badge"><%= g.users.count %></span>&nbsp;
+          <% end %>
+          </p>
+          <br>
+
+          <p><b>* Subjects</b> <span class="badge"><%= @subject_cnt %></p>
+          <p>---
+          <% @cohorts.each do |ch| %>
+            <%= ch %> <span class="badge"><%= ch.humen.count %></span> &nbsp;
+          <% end %>
+          </p>
+          <br>
+
+          <p><b>* Samples</b> <span class="badge"><%= @sample_cnt %></p>
+          <p>---
+          <% @types.each do |t| %>
+            <%= t %> <span class="badge"><%= t.human_samples.count %></span> &nbsp;
+          <% end %>
+          </p>
+          <br>
+
+          <p><b>* Projects</b> <span class="badge"><%= @project_cnt %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-xs-6 col-md-6'>
+      <div class="panel panel-default">
+        <div class="panel-heading-yellow"><b>What's next</b></div>
+        <div class="panel-body">
+          <div class='row'>
+            <div class='col-xs-6 col-md-6'>
+              Add more member <%= link_to new_admin_user_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+          </div>
+          <div class='col-xs-6 col-md-6'>
+            Add more group <%= link_to new_admin_group_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+        </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-xs-6 col-md-6'>
+              Add more human subject <%= link_to new_admin_human_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+          </div>
+          <div class='col-xs-6 col-md-6'>
+            Add more cohort <%= link_to new_admin_cohort_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+        </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-xs-6 col-md-6'>
+              Add more race <%= link_to new_admin_race_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+          </div>
+          <div class='col-xs-6 col-md-6'>
+            Add more population <%= link_to new_admin_population_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+        </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-xs-6 col-md-6'>
+              Add more human gender <%= link_to new_admin_gender_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+          </div>
+          <div class='col-xs-6 col-md-6'>
+            Add more status <%= link_to new_admin_status_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+        </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-xs-6 col-md-6'>
+              Add more visit log <%= link_to new_admin_visit_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+          </div>
+          <div class='col-xs-6 col-md-6'>
+            Add more visit type <%= link_to new_admin_visit_type_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+        </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-xs-6 col-md-6'>
+              Add more human sample <%= link_to new_admin_human_sample_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+          </div>
+          <div class='col-xs-6 col-md-6'>
+            Add more sample type <%= link_to new_admin_sample_type_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+        </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-xs-6 col-md-6'>
+              Add more main location <%= link_to new_admin_main_location_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+          </div>
+          <div class='col-xs-6 col-md-6'>
+              Add more project <%= link_to new_admin_project_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+        </div>
+          </div>
+          
+          <div class='row'>
+            <div class='col-xs-6 col-md-6'>
+              Add more dataset <%= link_to new_admin_dataset_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+          </div>
+          <div class='col-xs-6 col-md-6'>
+              Add more material <%= link_to new_admin_material_path do %><span class='glyphicon glyphicon-forward'></span><% end %>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

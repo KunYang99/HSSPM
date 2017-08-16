@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-tint'></i> Races</h3>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @races.each do |race| %>
+      <tr>
+        <td><%= race.name %></td>
+        <td><%= race.note %></td>
+        <td><%= link_to edit_admin_race_path(race.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to 'Add new race', new_admin_race_path, :class => 'btn btn-primary' %>

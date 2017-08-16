@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  human: one
+  visit_type: one
+  diagnosis: MyText
+  sans: false
+  neuropsycho: false
+
+two:
+  human: two
+  visit_type: two
+  diagnosis: MyText
+  sans: false
+  neuropsycho: false

@@ -1,0 +1,59 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-home'></i> Welcome to Stock Portal</h3>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class='col-sm-6'>
+      <div class="panel panel-green">
+        <div class="panel-heading"><strong>Subjects</strong></div>
+        <div class="panel-body" align='center'>
+          <%= form_tag({:controller => 'humen', :action => "search_results"}, :method => 'get') do %>
+            <%= select_tag :key, options_for_select(@ops_subject, 'ID') %> 
+            <%= text_field_tag :value %>
+            <%= submit_tag "Search", :class => 'btn btn-primary' %>
+          <% end %>
+          <hr class='light'>
+          <div align='left'>
+            <b>Summary:</b> We have <%= @valid.count %> valid human subjects and <%= Cohort.count %> cohorts: 
+            <% Cohort.all.each do |ch|; %>
+            <%= link_to ch, stock_cohort_path(ch) %>:
+            <%= @valid.cohort_of(ch.name).count %>;
+          <% end %>
+          </div>
+        </div>
+      </div>      
+    </div>
+
+    <div class='col-sm-6'>
+      <div class="panel panel-choc">
+        <div class="panel-heading"><strong>Samples</strong></div>
+        <div class="panel-body" align='center'>
+          <%= form_tag({:controller => 'human_samples', :action => "search_results"}, :method => 'get') do %>
+            <%= select_tag :key, options_for_select(@ops_sample, 'Type') %> 
+            <%= text_field_tag :value %>
+            <%= submit_tag "Search", :class => 'btn btn-primary' %>
+          <% end %>
+          <hr class='light'>
+          <div align='left'>
+            <b>Summary:</b> We have <%= HumanSample.count %> samples:
+            <% SampleType.all.each do |st| %>
+              <%= link_to st.to_desc, stock_sample_type_path(st) %>:
+              <%= st.human_samples.count %>;
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>      
+</div>   
+
+<hr>
+<div class="row">
+  <div class='col-sm-6'>
+    <%= pie_chart Human.joins(:cohorts).group('cohorts.name').count, {"library" => {"pieSliceText" => "percentage", "tooltip" => {"text" => "value"}, "title" => 'Subjects Distribution'}} %>
+  </div>
+  <div class='col-sm-6'>
+    <%= pie_chart HumanSample.group(:sample_type).count, {"library" => {"pieSliceText" => "percentage", "tooltip" => {"text" => "value"}, "title" => 'Samples Distribution'}} %>
+  </div>
+</div>

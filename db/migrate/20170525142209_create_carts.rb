@@ -1,0 +1,10 @@
+class CreateCarts < ActiveRecord::Migration[5.0]
+  def change
+    create_table :carts do |t|
+      t.references :user, index: true
+      t.references :human_sample, index: true
+
+      t.timestamps
+    end
+  end
+end

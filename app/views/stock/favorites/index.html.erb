@@ -1,0 +1,9 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-heart'></i> My Collection</h3>
+</div>
+
+<%= render partial: "subject_table", locals: {subject_list: @fav_subjects } %> 
+<%= render partial: "sample_table", locals: {sample_list: @fav_samples } %> 
+
+<%= link_to 'Download My Favorites', stock_favorites_path(format: "csv"), :class => 'btn btn-primary' %>
+

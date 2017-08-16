@@ -1,0 +1,15 @@
+<%= CSV.generate do |csv|
+
+  csv << ['Subject ID', 'Visit Type', 'Age', 'Diagnosis', 'Note']
+
+  @visit_all.each do |v|
+    new_row = []
+    new_row << v.human.accession
+    new_row << v.visit_type.value
+    new_row << v.age
+    new_row << v.diagnosis
+    new_row << v.note
+    csv << new_row
+  end
+
+end.html_safe %>

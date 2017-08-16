@@ -1,0 +1,41 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-eye-open'></i> Check if the system interpret your file correctly</h3>
+</div>
+
+<% if !@errors.blank? %>
+  <p class='text-danger'><strong><%= @errors.size %> ERRORs found! Please fix it before submitting to system</strong></p>
+  <ol>
+    <% @errors.each do |e| %>
+      <li><%= e %></li>
+    <% end %>
+  </ol>
+  <p><%= link_to 'Go back', admin_visits_batch_edit_path, :class => 'btn btn-primary' %></p>
+<% else %>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed">
+      <tr>
+        <th>Subject ID</th>
+        <th>Visit Type</th>
+        <th>Age</th>
+        <th>Diagnosis</th>
+        <th>Note</th>
+      </tr>
+      <% CSV.foreach(@csv_file, headers: true, row_sep: :auto, :col_sep => @this_sep) do |row| %>
+        <% dat = row.to_hash %>
+        <tr>
+          <td><%= dat['Subject ID'] %></td>
+          <td><%= dat['Visit Type'] %></td>
+          <td><%= dat['Age'] %></td>
+          <td><%= dat['Diagnosis'] %></td>
+          <td><%= dat['Note'] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  
+  <p>
+  <%= link_to 'Go back', admin_visits_batch_edit_path, :class => 'btn btn-danger' %>
+  <%= link_to 'Update', {:action => :batch_update, :file =>@csv_file}, :class => 'btn btn-success', :method => :post %>
+  </p>
+<% end %>

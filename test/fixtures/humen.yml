@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  accession: MyString
+  other_ids: MyString
+  cohort: one
+  visit: one
+  race: one
+  diagnosis: MyText
+  population: one
+  age: 1
+  sex: one
+  note: MyText
+  status: one
+
+two:
+  accession: MyString
+  other_ids: MyString
+  cohort: two
+  visit: two
+  race: two
+  diagnosis: MyText
+  population: two
+  age: 1
+  sex: two
+  note: MyText
+  status: two

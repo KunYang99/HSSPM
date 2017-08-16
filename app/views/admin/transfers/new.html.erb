@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-plus'></i> Add transfer</h3>
+</div>
+<%= simple_form_for([:admin,@transfer]) do |f| %>
+  <% if @id %>
+    <%= f.association :human_sample, :input_html => { :class => :wd300 }, selected: @id %>
+  <% else %>
+    <%= f.association :human_sample, :input_html => { :class => :wd300 } %>
+  <% end %>
+  <%= f.input :trans_from, :input_html => { :class => :wd300 }, label: 'From' %>
+  <%= f.input :trans_to, :input_html => { :class => :wd300 }, label: 'To' %>
+  <%= f.input :amount, :input_html => { :class => :wd300 }, label: 'Transfer Amount', hint: "remember to change the available amount of the sample" %>
+  <%= f.input :note, :input_html => { :class => :wd300 } %>
+  
+  <br><%= recaptcha_tags %><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,33 @@
+<div class="table-responsive" id="filterrific_results">
+  <div>
+    <%= page_entries_info dataset_list %>
+  </div>
+  <%= will_paginate dataset_list, :class => 'digg_pagination' %>
+  <br>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Subject ID</th>
+      <th>Title</th>
+      <th>File</th>
+      <th>Availability</th>
+      <th>Projects</th>
+      <th>PI</th>
+      <th>Contributors</th>
+      <th>Note</th>
+    </tr>
+
+    <% dataset_list.each do |s| %>
+      <tr>
+        <td><%= s.human %></td>
+        <td><%= s.title %></td>
+        <td><%= link_to s.file_identifier, s.file.url %></td>
+        <td><%= s.availability %></td>
+        <td><%= s.to_projects %></td>
+        <td><%= s.pi %></td>
+        <td><%= s.contributors %></td>
+        <td><%= s.note %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

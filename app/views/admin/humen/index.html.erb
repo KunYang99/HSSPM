@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-list-alt'></i> Human Subjects</h3>
+  <%= link_to 'Add one subject', new_admin_human_path %> | <%= link_to 'Add a batch', admin_humen_batch_new_path %> | <%= link_to 'Update a batch', admin_humen_batch_edit_path %>
+</div>
+
+<div align='center'>
+  <%= form_tag({:action => "search_results"}, :method => 'get') do %>
+    <%= select_tag :key, options_for_select(@ops, 'ID') %> 
+    <%= text_field_tag :value %>
+    <%= submit_tag "Search", :class => 'btn btn-primary' %>
+  <% end %>
+</div>
+<hr>
+
+<%= render partial: "subject_table", locals: {subject_list: @subjects } %> 

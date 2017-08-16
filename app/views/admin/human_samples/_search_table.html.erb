@@ -1,0 +1,43 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed" id='my-table'>
+    <tr>
+      <th>Sample ID</th>
+      <th>Type</th>
+      <th>Subject ID</th>
+      <th>Visit</th>
+      <th>Original Amount</th>
+      <th>Available Amount</th>
+      <th>Concentration</th>
+      <th>Location</th>
+      <th>Source</th>
+      <th>Prepared by</th>
+      <th>Created on</th>
+      <th>Note</th>
+      <th>&nbsp;</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% sample_list.each do |s| %>
+          <tr>
+          <td><%= s.accession %></td>
+          <td><%= s.sample_type %></td>
+          <td><%= s.human %></td>
+          <td><%= s.visit.visit_type %></td>
+          <td><%= s.amount %></td>
+          <td><%= s.avail_amount %></td>
+          <td><%= s.concentration %></td>
+          <td><%= s.main_location %>: <%= s.sub_location %></td>
+          <td><%= s.source %></td>
+          <td><%= s.prepared_by %></td>
+          <td><%= s.created_on %></td>
+          <td><%= s.note %></td>
+          <td><%= link_to 'add transfer', new_admin_transfer_path(:human_sample_id => s.id) %></td>
+          <td>
+            <%= link_to edit_admin_human_sample_path(s) do %><span class='glyphicon glyphicon-pencil'></span><% end %>
+            <%= link_to admin_human_sample_path(s), :data => {:confirm => 'Want to delete this sample?'}, :method => :delete do %><span class='glyphicon glyphicon-trash'></span><% end %>
+          </td>
+          </tr>
+        <% end %>
+  </table>
+</div>
+

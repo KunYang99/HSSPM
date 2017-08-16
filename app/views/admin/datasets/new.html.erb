@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-plus'></i> Add new dataset</h3>
+</div>
+<%= simple_form_for([:admin,@dataset], html: { multipart: true }) do |f| %>
+  <%= f.association :human, :input_html => { :class => :wd300 } %>
+  <%= f.input :title, :input_html => { :class => :wd300 } %>
+  <%= f.input :availability, :input_html => { :class => :wd300 }, hint: "if you are to upload the file, the availability should be online" %>
+  <%= f.input :contributors, :input_html => { :class => :wd300 }, hint: "use ', ' to seperate contributors" %>
+  <%= f.input :pi, :input_html => { :class => :wd300 }, :label => 'PI', hint: "if has mutilple PIs, use ', ' to seperate" %>
+  <%= f.input :note, :input_html => { :class => :wd300 } %>
+  <%= f.association :projects, as: :check_boxes %>
+  <%= f.file_field :file %> 
+  
+  <br><%= recaptcha_tags %><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>

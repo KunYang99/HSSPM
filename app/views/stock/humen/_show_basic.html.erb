@@ -1,0 +1,25 @@
+<div class="panel panel-info">
+  <div class="panel-heading"><b>Basic Info</b></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Status</th>
+      <th>ID</th>
+      <th>Other IDs</th>
+      <th>Cohort</th>
+      <th>Gender</th>
+      <th>Race</th>
+      <th>Population</th>
+      <th>Note</th>
+    </tr>
+    <tr>
+      <td><%= @human.status %></td>
+      <td><%= @human.accession %></td>
+      <td><%= @human.other_ids %></td>
+      <td><%= @human.to_cohorts %></td>
+      <td><%= @human.gender %></td>
+      <td><%= @human.to_races %></td>
+      <td><%= @human.population %></td>
+      <td><%= @human.note %></td>
+    </tr>
+  </table>
+</div>

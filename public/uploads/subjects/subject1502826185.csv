@@ -1,0 +1,10 @@
+Subject ID,Visit Type,Age,Diagnosis,Note
+Subject0001,1st visit,23,,
+Subject0002,1st visit,32,disease A,
+Subject0003,1st visit,22,disease A,didn't get blood draw
+Subject0004,1st visit,18,,
+Subject0005,1st visit,20,disease A,
+Subject0006,1st visit,34,,
+Subject0002,2nd visit,33,disease A,
+Subject0003,2nd visit,23,disease A,
+Subject0004,2nd visit,19,,

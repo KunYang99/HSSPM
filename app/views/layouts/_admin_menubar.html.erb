@@ -1,0 +1,85 @@
+<ul class="nav navbar-nav">
+
+  <li>
+    <%= link_to admin_root_path do %>
+      <i class="glyphicon glyphicon-home"></i>
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to root_path do %>
+      <i class="glyphicon glyphicon-th"></i>
+    <% end %>
+  </li>
+
+  <!-- Account menu -->
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Members
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'List All', admin_users_path %></li>
+      <li><%= link_to 'Add New',  new_admin_user_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to 'Groups', admin_groups_path %></li>
+    </ul>
+  </li>
+
+  <!-- Human Subject menu -->
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Human Subjects
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'List All', admin_humen_path %></li>
+      <li><%= link_to 'Add One Subject',  new_admin_human_path %></li>
+      <li><%= link_to 'Add A Batch', admin_humen_batch_new_path %></li>
+      <li><%= link_to 'Update A Batch', admin_humen_batch_edit_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to 'Visits', admin_visits_path %></li>
+      <li><%= link_to 'Visit Types', admin_visit_types_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to 'Cohort', admin_cohorts_path %></li>
+      <li><%= link_to 'Race', admin_races_path %></li>
+      <li><%= link_to 'Population', admin_populations_path %></li>
+      <li><%= link_to 'Status', admin_statuses_path %></li>
+      <li><%= link_to 'Gender', admin_genders_path %></li>
+    </ul>
+  </li>
+
+  <!-- Sample menu -->
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Human Samples
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'List All', admin_human_samples_path %></li>
+      <li><%= link_to 'Add One Sample',  new_admin_human_sample_path %></li>
+      <li><%= link_to 'Add A Batch', admin_human_samples_batch_new_path %></li>
+      <li><%= link_to 'Update A Batch', admin_human_samples_batch_edit_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to 'Transfer History', admin_transfers_path %></li>
+      <li><%= link_to 'Sample Types', admin_sample_types_path %></li>
+      <li><%= link_to 'Main Locations', admin_main_locations_path %></li>
+      <li><%= link_to 'Materials',  admin_materials_path %></li>
+    </ul>
+  </li>
+
+  <!-- Dataset menu -->
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Projects
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'Add New Project', admin_projects_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to 'Datasets', admin_datasets_path %></li>
+    </ul>
+  </li>
+
+</ul>
+

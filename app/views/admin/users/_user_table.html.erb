@@ -1,0 +1,26 @@
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Name</th>
+      <th>Gmail Account</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Groups</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% user_list.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.gmail %></td>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.to_groups %></td>
+        <td><%= link_to edit_admin_user_path(user.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

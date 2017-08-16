@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-plus'></i> Add new transfers</h3>
+</div>
+<%= simple_form_for(@transfer, :url => admin_transfers_confirm_create_path, html: { multipart: true }) do |f| %>
+  <%= file_field_tag :csv_file %>
+  <small class='text-danger'>Only comma-delimited or tab-delimited text file (csv, txt) allowed</small>
+  <br><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+
+  <hr />
+  <p>The uploaded file must and can only have the following columns:</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-condensed">
+      <tr>
+        <th>Sample ID</th>
+        <th>Transfer From</th>
+        <th>Transfer To</th>
+        <th>Transfer Amount</th>
+        <th>Sample Available Amount</th>
+        <th>Note</th>
+      </tr>
+      <tr>
+        <td>Must already in system</td>
+        <td>Person or storage place</td>
+        <td>Person or storage place</td>
+        <td>&nbsp;</td>
+        <td>The available amount of sample after transfer</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+  <i class='glyphicon glyphicon-download-alt'></i> <%= link_to 'Download Template', :action => :send_template %>
+
+<% end %>

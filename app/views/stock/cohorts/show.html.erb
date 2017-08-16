@@ -1,0 +1,45 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-tree-conifer'></i> <%= @cohort %></h3>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading"><b>Summary</b></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>#Subjects</th>
+      <th>#Valid</th>
+      <th>#Valid Male</th>
+      <th>#Valid Female</th>
+      <th>#Control</th>
+      <th>#SZ</th>
+      <th>#BP</th>
+    </tr>
+    <tr>
+      <td><%= @subject_all.count %></td>
+      <td><%= @valid.count %></td>
+      <td><%= @m_cnt %></td>
+      <td><%= @f_cnt %></td>
+      <td><%= @con_cnt %></td>
+      <td><%= @sz_cnt %></td>
+      <td><%= @bp_cnt %></td>
+    </tr>
+  </table>
+</div>
+
+<hr />
+<div id='input-box'>
+  <%= form_for_filterrific @filterrific  do |f| %>
+    Search <%= f.text_field :search_query, class: 'filterrific-periodically-observed' %>
+  &nbsp;&nbsp;&nbsp;Status <%= f.select :with_status, @filterrific.select_options[:with_status], {include_blank: '- Any -'} %>
+&nbsp;&nbsp;&nbsp;Population <%= f.select :with_population, @filterrific.select_options[:with_population], {include_blank: '- Any -'} %>
+&nbsp;&nbsp;&nbsp;Geneder <%= f.select :with_gender, @filterrific.select_options[:with_gender], {include_blank: '- Any -'} %>
+  &nbsp;&nbsp;&nbsp;Race <%= f.select :with_race, @filterrific.select_options[:with_race], {include_blank: '- Any -'} %>
+&nbsp;&nbsp;&nbsp;<%= link_to 'Reset filters', reset_filterrific_url %>
+&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+<%= link_to stock_cohort_path(format: "csv", :id => @cohort.id) do %><i class='glyphicon glyphicon-download-alt'></i> Download this cohort<% end %>
+<% end %>
+</div>
+
+<br />
+<%= render partial: "subject_table", locals: {subject_list: @subjects } %> 
+

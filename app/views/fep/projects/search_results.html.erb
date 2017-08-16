@@ -1,0 +1,38 @@
+<div class="header-green">
+  <h3><i class='glyphicon glyphicon-object-align-bottom'></i> Search Results</h3>
+</div>
+
+<table class="table table-bordered table-striped table-condensed">
+  <tr class='success'>
+    <th>Title</th>
+    <th>PI</th>
+    <th>Members</th>
+    <th>Progress</th>
+    <th>Description</th>
+    <th>Datasets</th>
+  </tr>
+  <% @projects.each do |p| %>
+    <tr>
+      <td><%= p.name %></td>
+      <td><%= p.PI %></td>
+      <td><%= p.members %></td>
+      <td>
+        <div class="progress">
+          <% if  p.progress < 50 %>
+            <div class="progress-bar progress-bar-danger progress-bar-striped" style="width: <%= p.progress %>%">
+            <% else %>
+              <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: <%= p.progress %>%">
+              <% end %>
+              <%= p.progress %>%
+              </div>
+            </div>
+      </td>
+      <td><%= p.description %></td>
+      <% if p.datasets.size == 0 %>
+        <td>None</td>
+      <% else %>
+        <td><%= 'View', project_path(p) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

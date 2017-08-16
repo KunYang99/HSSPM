@@ -1,0 +1,43 @@
+<%= CSV.generate do |csv|
+
+  csv << ['Human Subjects']
+  csv << ['Status', 'ID', 'Other IDs', 'Cohort', 'Gender', 'Race', 'Population', 'Note']
+
+  @fav_subjects.each do |fav|
+    s = fav.human
+    new_row = []
+    new_row << s.status.try(:name)
+    new_row << s.accession
+    new_row << s.other_ids
+    new_row << s.to_cohorts
+    new_row << s.gender.try(:name)
+    new_row << s.to_races
+    new_row << s.population.try(:name)
+    new_row << s.note
+    csv << new_row
+  end
+
+  csv << ['']
+  csv << ['']
+  csv << ['Samples']
+
+  csv << ['Sample ID', 'Type', 'Subject ID', 'Visit', 'Amount', 'Concentration', 'Location', 'Source', 'Prepared by', 'Created on', 'Note']
+
+  @fav_samples.each do |fav|
+    s = fav.human_sample
+    new_row = []
+    new_row << s.accession
+    new_row << s.sample_type.name
+    new_row << s.human.accession
+    new_row << s.visit_type.value
+    new_row << s.amount
+    new_row << s.concentration
+    new_row << "#{s.main_location}: #{s.sub_location}"
+    new_row << s.source
+    new_row << s.prepared_by
+    new_row << s.created_on
+    new_row << s.note
+    csv << new_row
+  end
+
+end.html_safe %>

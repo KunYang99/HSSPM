@@ -1,0 +1,15 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-record'></i> Search Results</h3>
+</div>
+
+<div align='center'>
+  <%= form_tag({:action => "search_results"}, :method => 'get') do %>
+    <%= select_tag :key, options_for_select(@ops, 'Type') %> 
+    <%= text_field_tag :value %>
+    <%= submit_tag "Search Again", :class => 'btn btn-primary' %>
+  <% end %>
+</div>
+<hr>
+
+<p><%= @samples.count %> records found! &nbsp;&nbsp;| &nbsp;&nbsp;<%= link_to stock_human_samples_search_results_path(format: "csv", :key => @key, :value => @value) do %><i class='glyphicon glyphicon-download-alt'></i> Download search results<% end %></p>
+<%= render partial: "search_table", locals: {sample_list: @samples } %> 

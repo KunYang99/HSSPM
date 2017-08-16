@@ -1,0 +1,27 @@
+<div class="table-responsive" id="filterrific_results">
+  <div>
+    <%= page_entries_info visit_list %>
+  </div>
+
+  <%= will_paginate visit_list, :class => 'digg_pagination' %>
+  <br>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Subject</th>
+      <th>Visit</th>
+      <th>Age</th>
+      <th>Diagnosis</th>
+      <th>Note</th>
+    </tr>
+
+    <% visit_list.each do |v| %>
+      <tr>
+        <td><%= v.human %></td>
+        <td><%= v.visit_type %></td>
+        <td><%= v.age %></td>
+        <td><%= v.diagnosis %></td>
+        <td><%= v.note %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
