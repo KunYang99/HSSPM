@@ -1,0 +1,14 @@
+<div class="panel panel-success">
+  <div class="panel-heading"><b>Demographic Data</b></div>
+  <div class="panel-body">
+    <% if @human.demography %>
+      <% dat = []; @human.demography.data.split("\r\n").each do |d| %>
+        <% items = d.split(':') %>
+        <% dat << "<b>#{items[0].strip}</b>: #{items[1].strip}" %>
+      <% end %>
+      <%= raw(word_wrap(dat.join("&nbsp;&nbsp;&nbsp;&nbsp;"))) %>
+    <% else %>
+      None
+    <% end %>
+  </div>
+</div>

@@ -34,6 +34,10 @@
 .wd300 {
   width: 300px;
 }
+.w300h500 {
+  width: 300px;
+  height: 500px;
+}
 .wd60-pct {
   width: 60%;
 }
@@ -74,6 +78,13 @@
   padding-left: 15px;
   padding-bottom: 5px;
   margin-bottom: 15px;
-  background-color: #988a81;
+  background-color: #70645c;
 }
 
+.greycell {
+  background-color: #b2b2b2;
+}
+.greyheader {
+  background-color: #3b3a30;
+  color: #fff;
+}

@@ -1,0 +1,45 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-pencil'></i> Edit human subject</h3>
+</div>
+<%= simple_form_for([:clinic,@human]) do |f| %>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#basic">Basic Info</a></li>
+    <li><a data-toggle="tab" href="#visit">Visit Log</a></li>
+    <li><a data-toggle="tab" href="#demo">Demographic Data</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="basic" class="tab-pane fade in active">
+      <br>
+      <%= f.input :accession, :input_html => { :class => :wd300 } %>
+      <%= f.input :other_ids, :input_html => { :class => :wd300, :value => @other_ids }, hint: "One id per line" %>
+      <%= f.association :gender, :input_html => { :class => :wd300 } %>
+      <%= f.association :races, :as => :check_boxes %>
+      <%= f.association :irbs, :as => :check_boxes %>
+      <%= f.association :population, :input_html => { :class => :wd300 } %>
+      <%= f.association :status, :input_html => { :class => :wd300 } %>
+      <%= f.input :note, :input_html => { :class => :wd300 } %>
+    </div>
+    <div id="visit" class="tab-pane fade">
+      <br>
+      <%= f.simple_fields_for :visits do |v| %>
+        <%= v.association :visit_type, :input_html => { :class => :wd300 } %>
+        <%= v.input :age, :input_html => { :class => :wd300 } %>
+        <%= v.input :diagnosis, :input_html => { :class => :wd300 } %>
+        <%= v.input :visit_date, :include_blank => true %>
+        <%= v.input :note, :input_html => { :class => :wd300 } %>
+        <hr class='light'/>
+      <% end %>
+    </div>
+    <div id="demo" class="tab-pane fade">
+      <br>
+      <%= f.simple_fields_for :demography do |d| %>
+        <%= d.input :data, :input_html => { :class => :wd300, :rows => 10 }, :label => 'Demographic Data', :hint => raw("One item per line, must in format key:value, e.g.<br> height: 74 inches<br> weight: 120 lbs") %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= recaptcha_tags %><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>

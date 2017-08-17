@@ -1,0 +1,13 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-pencil'></i> Add new event</h3>
+</div>
+<%= simple_form_for([:clinic,@event]) do |f| %>
+  <%= f.input :title, :input_html => { :class => :wd300 } %>
+  <%= f.input :start, :input_html => { :class => :wd300 }, :label => 'From' %>
+  <%= f.input :stop, :input_html => { :class => :wd300 }, :label => 'To' %>
+  <%= f.input :place, :input_html => { :class => :wd300 }, :label => 'Where' %>
+  <%= f.input :note, :input_html => { :class => :wd300 } %>
+  <%= recaptcha_tags %><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>

@@ -1,0 +1,41 @@
+<div class="table-responsive" id="filterrific_results">
+  <div>
+    <%= page_entries_info subject_list %>
+  </div>
+  <%= will_paginate subject_list, :class => 'digg_pagination' %>
+  <br>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr class='info'>
+        <th>Status</th>
+        <th>ID</th>
+        <th>Other IDs</th>
+        <th>IRB Study</th>
+        <th>Gender</th>
+        <th>Race</th>
+        <th>Population</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% subject_list.each do |s| %>
+        <% if s.status.try(:name) == 'Invalid' %>
+          <tr class='danger'>
+          <% else %>
+            <tr>
+            <% end %>
+            <td><%= s.status %></td>
+            <td><%= link_to s.accession, clinic_human_path(s) %></td>
+            <td><%= s.other_ids %></td>
+            <td><%= s.to_irbs %></td>
+            <td><%= s.gender %></td>
+            <td><%= s.to_races %></td>
+            <td><%= s.population %></td>
+            <td><%= s.note %></td>
+            </tr>
+          <% end %>
+    </tbody>
+  </table>
+</div>
+

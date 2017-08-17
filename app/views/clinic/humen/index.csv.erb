@@ -1,0 +1,18 @@
+<%= CSV.generate do |csv|
+
+  csv << ['Status', 'ID', 'Other IDs', 'Cohort', 'Gender', 'Race', 'Population', 'Note']
+
+  @subject_all.each do |s|
+    new_row = []
+    new_row << s.status.try(:name)
+    new_row << s.accession
+    new_row << s.other_ids
+    new_row << s.to_cohorts
+    new_row << s.gender.try(:name)
+    new_row << s.to_races
+    new_row << s.population.try(:name)
+    new_row << s.note
+    csv << new_row
+  end
+
+end.html_safe %>

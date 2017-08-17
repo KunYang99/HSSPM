@@ -8,6 +8,7 @@
   <%= f.association :visit_type, :input_html => { :class => :wd300 } %>
   <%= f.input :age, :input_html => { :class => :wd300 } %>
   <%= f.input :diagnosis, :input_html => { :class => :wd300 } %>
+  <%= f.input :visit_date, :include_blank => true %>
   <%= f.input :note, :input_html => { :class => :wd300 } %>
   <%= recaptcha_tags %><br>
 

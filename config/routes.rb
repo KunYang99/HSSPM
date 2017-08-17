@@ -44,8 +44,15 @@ Rails.application.routes.draw do
 
   namespace :clinic do
     root to: 'home#index'
+    
+    get "/humen/search_results" => "humen#search_results"
 
     resources :home
+    resources :events
+    resources :humen
+    resources :demographies
+    resources :irbs
+    resources :visits
   end
 
   namespace :admin do

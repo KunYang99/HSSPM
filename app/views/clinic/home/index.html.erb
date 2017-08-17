@@ -1,3 +1,37 @@
 <div class="header-choc">
   <h3><i class='glyphicon glyphicon-home'></i> Welcome to Clinical Data Portal</h3>
 </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class='col-sm-6'>
+      <div class="panel panel-grey2">
+        <div class="panel-heading"><strong>Upcoming events</strong></div>
+        <div class="panel-body">
+          <ul>
+          <% @events.each do |e| %>
+            <li><%= e.start.strftime("%m/%d/%y") %> <%= link_to e.title, clinic_event_path(e) %></li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+    <div class='col-sm-6'>
+      <div class="panel panel-purple">
+        <div class="panel-heading"><strong>Subjects</strong></div>
+        <div class="panel-body" align='center'>
+          <%= form_tag({:controller => 'humen', :action => "search_results"}, :method => 'get') do %>
+            <%= select_tag :key, options_for_select(@ops, 'ID') %> 
+            <%= text_field_tag :value %>
+            <%= submit_tag "Search", :class => 'btn btn-primary' %>
+          <% end %>
+          <hr class='light'>
+          <div align='left'>
+            <b>Summary:</b> We have <%= Human.count %> human subjects and <%= Irb.count %> IRB studies 
+          </div>
+        </div>
+      </div>      
+    </div>
+
+  </div>      
+</div>   

@@ -76,7 +76,7 @@ class Admin::VisitsController < ApplicationController
       headers = CSV.open(@csv_file, 'r', :col_sep => @this_sep) { |csv| csv.first }
     end
 
-    fields = "Subject ID,Visit Type,Age,Diagnosis,Note".split(',').sort
+    fields = "Subject ID,Visit Type,Age,Diagnosis,Visit Date,Note".split(',').sort
     if headers.sort != fields
       wrong_f = []
       headers.each do |x|
@@ -129,7 +129,7 @@ class Admin::VisitsController < ApplicationController
       headers = CSV.open(@csv_file, 'r', :col_sep => @this_sep) { |csv| csv.first }
     end
 
-    fields = "Subject ID,Visit Type,Age,Diagnosis,Note".split(',')
+    fields = "Subject ID,Visit Type,Age,Diagnosis,Visit Date,Note".split(',')
 
     headers.each do |h|
       unless fields.include?(h)
@@ -170,7 +170,7 @@ class Admin::VisitsController < ApplicationController
     begin
       CSV.foreach(csv_file, headers: true, row_sep: :auto, :col_sep => this_sep) do |row|
         dat = row.to_hash
-        this_visit = Visit.new({human: Human.find_by_accession(dat['Subject ID']), visit_type: VisitType.find_by_value(dat['Visit Type']), note: dat['Note'], diagnosis: dat['Diagnosis'], age: dat['Age']})
+        this_visit = Visit.new({human: Human.find_by_accession(dat['Subject ID']), visit_type: VisitType.find_by_value(dat['Visit Type']), note: dat['Note'], diagnosis: dat['Diagnosis'], age: dat['Age'], visit_date: dat['Visit Date']})
 
         this_visit.save
       end
@@ -201,6 +201,10 @@ class Admin::VisitsController < ApplicationController
           this_visit.diagnosis = dat['Diagnosis']
         end
 
+        unless dat['Visit Date'].blank?
+          this_visit.diagnosis = dat['Visit Date']
+        end
+
         unless dat['Note'].blank?
           this_visit.note = dat['Note']
         end
@@ -220,7 +224,7 @@ class Admin::VisitsController < ApplicationController
   end
 
   def send_template
-    dat = "Subject ID,Visit Type,Age,Diagnosis,Note"
+    dat = "Subject ID,Visit Type,Age,Diagnosis,Visit Date,Note"
     send_data dat, :filename => 'visit_upload_template.csv', :type => "text/csv", :disposition => 'attachment'
   end
 

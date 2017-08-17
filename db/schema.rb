@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815203026) do
+ActiveRecord::Schema.define(version: 20170817183841) do
 
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -51,6 +51,24 @@ ActiveRecord::Schema.define(version: 20170815203026) do
     t.integer "dataset_id", null: false
     t.integer "project_id", null: false
     t.index ["dataset_id", "project_id"], name: "index_datasets_projects_on_dataset_id_and_project_id", using: :btree
+  end
+
+  create_table "demographies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "human_id"
+    t.text     "data",       limit: 4294967295
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["human_id"], name: "index_demographies_on_human_id", using: :btree
+  end
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.datetime "start"
+    t.datetime "stop"
+    t.string   "place"
+    t.text     "note",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "fav_samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -125,10 +143,25 @@ ActiveRecord::Schema.define(version: 20170815203026) do
     t.index ["status_id"], name: "index_humen_on_status_id", using: :btree
   end
 
+  create_table "humen_irbs", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "human_id", null: false
+    t.integer "irb_id",   null: false
+    t.index ["human_id", "irb_id"], name: "index_humen_irbs_on_human_id_and_irb_id", using: :btree
+  end
+
   create_table "humen_races", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "human_id", null: false
     t.integer "race_id",  null: false
     t.index ["human_id", "race_id"], name: "index_humen_races_on_human_id_and_race_id", using: :btree
+  end
+
+  create_table "irbs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "number"
+    t.text     "name",       limit: 65535
+    t.string   "pi"
+    t.text     "note",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "main_locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -221,9 +254,11 @@ ActiveRecord::Schema.define(version: 20170815203026) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "age"
+    t.date     "visit_date"
     t.index ["human_id"], name: "index_visits_on_human_id", using: :btree
     t.index ["visit_type_id"], name: "index_visits_on_visit_type_id", using: :btree
   end
 
+  add_foreign_key "demographies", "humen"
   add_foreign_key "transfers", "human_samples"
 end

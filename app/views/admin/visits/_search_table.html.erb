@@ -5,6 +5,7 @@
       <th>Visit Type</th>
       <th>Age</th>
       <th>Diagnosis</th>
+      <th>Visit Date</th>
       <th>Note</th>
       <th>&nbsp;</th>
     </tr>
@@ -15,6 +16,7 @@
         <td><%= visit.visit_type %></td>
         <td><%= visit.age %></td>
         <td><%= visit.diagnosis %></td>
+        <td><%= visit.visit_date %></td>
         <td><%= visit.note %></td>
         <td>
           <%= link_to edit_admin_visit_path(visit) do %><span class='glyphicon glyphicon-pencil'></span><% end %>

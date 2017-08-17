@@ -1,0 +1,22 @@
+<div class="panel panel-warning">
+  <div class="panel-heading"><b>Visit log</b></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Visit</th>
+      <th>Age</th>
+      <th>Diagnosis</th>
+      <th>Visit Date</th>
+      <th>Note</th>
+    </tr>
+
+    <% @human.visits.order(:visit_type_id).each do |v| %>
+      <tr>
+        <td><%= v.visit_type %></td>
+        <td><%= v.age %></td>
+        <td><%= v.diagnosis %></td>
+        <td><%= v.visit_date %></td>
+        <td><%= v.note %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

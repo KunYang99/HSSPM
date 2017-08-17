@@ -1,0 +1,10 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-user'></i> <%= @human %></h3>
+</div>
+
+<%= render partial: "show_basic" %> 
+<%= render partial: "show_demography" %>
+<%= render partial: "show_visit" %> 
+
+<%= link_to 'Edit Subject', edit_clinic_human_path(@human), class: 'btn btn-primary' %>
+

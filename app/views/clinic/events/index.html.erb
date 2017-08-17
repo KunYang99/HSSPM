@@ -1,0 +1,26 @@
+<div class="header-choc">
+  <h3><i class='glyphicon glyphicon-calendar'></i> Calendar</h3>
+</div>
+
+<div align='center'>
+  <h4>
+    <%= link_to date: @date.prev_month do %>
+      <i class='glyphicon glyphicon-backward'></i>
+    <% end %>
+    <%= @date.strftime("%B %Y") %>
+    <%= link_to date: @date.next_month do %>
+      <i class='glyphicon glyphicon-forward'></i>
+    <% end %>
+  </h4>
+</div>
+<%= calendar @date do |date| %>
+  <%= date.day %>
+  <% if @events_by_date[date] %>
+    <% @events_by_date[date].each do |event| %>
+      <p><%= link_to event.title, clinic_event_path(event) %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Add event', new_clinic_event_path, class: 'btn btn-primary' %>
+

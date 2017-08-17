@@ -5,7 +5,7 @@ class Visit < ApplicationRecord
   has_many :human_samples
 
   validates_uniqueness_of :human_id, scope: :visit_type_id
-  validates_presence_of :human_id
+  validates_presence_of :human
   validates_presence_of :visit_type_id
 
   # settings for filterrific

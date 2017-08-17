@@ -19,6 +19,7 @@
         <th>Visit Type</th>
         <th>Age</th>
         <th>Diagnosis</th>
+        <th>Visit Date</th>
         <th>Note</th>
       </tr>
       <% CSV.foreach(@csv_file, headers: true, row_sep: :auto, :col_sep => @this_sep) do |row| %>
@@ -28,6 +29,7 @@
           <td><%= dat['Visit Type'] %></td>
           <td><%= dat['Age'] %></td>
           <td><%= dat['Diagnosis'] %></td>
+          <td><%= dat['Visit Date'] %></td>
           <td><%= dat['Note'] %></td>
         </tr>
       <% end %>

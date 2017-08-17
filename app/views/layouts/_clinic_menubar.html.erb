@@ -12,5 +12,30 @@
     <% end %>
   </li>
 
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      Subjects
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'View', clinic_humen_path %></li>
+      <li><%= link_to 'Add New', new_clinic_human_path %></li>
+    </ul>
+  </li>
+
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+      IRB Studies
+    </a>
+    <ul class="dropdown-menu">
+      <li><%= link_to 'View', clinic_irbs_path %></li>
+      <li><%= link_to 'Add New', new_clinic_irb_path %></li>
+    </ul>
+  </li>
+
+  <li>
+    <%= link_to clinic_events_path do %>
+      <i class="glyphicon glyphicon-calendar"></i>
+    <% end %>
+  </li>
 </ul>
 

@@ -1,0 +1,16 @@
+<div class="header-choc">
+  <h3><i class='glyphicon glyphicon-time'></i> Event</h3>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Title</dt>
+  <dd class="clearfix"><%= @event.title %></dd>
+  <dt>When</dt>
+  <dd class="clearfix"><%= @event.start.strftime("%Y %d/%m %l:%M %p") %> to <%= @event.stop.strftime("%d/%m %l:%M %p") %></dd>
+  <dt>Where</dt>
+  <dd class="clearfix"><%= @event.place %></dd>
+  <dt>Note</dt>
+  <dd class="clearfix"><%= @event.note %></dd>
+</dl>
+<%= link_to 'Edit', edit_clinic_event_path(@event), class: 'btn btn-primary' %>
+<%= link_to 'Delete', clinic_event_path(@event), :data => {:confirm => 'Want to delete this event?'}, :method => :delete, :class => 'btn btn-danger' %>
