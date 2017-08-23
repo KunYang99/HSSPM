@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     resources :demographies
     resources :irbs
     resources :visits
+    resources :clinic_files
   end
 
   namespace :admin do

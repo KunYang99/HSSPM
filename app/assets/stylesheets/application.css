@@ -43,6 +43,8 @@
 }
 .page-header {
   margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
 }
 .header-blue {
   color: #fff;

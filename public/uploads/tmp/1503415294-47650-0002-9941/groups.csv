@@ -1,0 +1,6 @@
+id,"name","note","created_at","updated_at"
+1,"admin","Administrator: can access administration panel, can add/edit/delete data ","2017-05-16 14:45:00","2017-05-16 14:45:00"
+2,"sample","Members who can access sample portal","2017-05-16 14:45:00","2017-07-19 17:06:49"
+3,"disabled","Previous members: not allowed to access the website anymote","2017-05-16 14:45:00","2017-05-16 14:45:00"
+4,"FEP","Members who can access FEP project portal","2017-07-19 17:07:23","2017-07-19 17:07:23"
+5,"clinic","Members who can access clinical data","2017-07-19 17:07:52","2017-07-19 17:07:52"

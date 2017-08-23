@@ -5,7 +5,7 @@
   <%= will_paginate dataset_list, :class => 'digg_pagination' %>
   <br>
   <table class="table table-bordered table-striped table-condensed">
-    <tr>
+    <tr class='success'>
       <th>Subject ID</th>
       <th>Title</th>
       <th>File</th>
@@ -20,7 +20,7 @@
       <tr>
         <td><%= s.human %></td>
         <td><%= s.title %></td>
-        <td><%= link_to s.file_identifier, s.file.url %></td>
+        <td><% unless s.file.blank? %><%= link_to s.file_identifier, s.file.url %><% else %>&nbsp;<% end %></td>
         <td><%= s.availability %></td>
         <td><%= s.to_projects %></td>
         <td><%= s.pi %></td>

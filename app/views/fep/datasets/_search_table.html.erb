@@ -1,6 +1,7 @@
+<p><b><%= dataset_list.size %></b> datasets found</p>
 <div class="table-responsive">
   <table class="table table-bordered table-striped table-condensed">
-    <tr>
+    <tr class='success'>
       <th>Subject ID</th>
       <th>Title</th>
       <th>File</th>
@@ -14,7 +15,7 @@
       <tr>
         <td><%= s.human %></td>
         <td><%= s.title %></td>
-        <td><%= link_to s.file_identifier, s.file.url %></td>
+        <td><% unless s.file.blank? %><%= link_to s.file_identifier, s.file.url %><% else %>&nbsp;<% end %></td>
         <td><%= s.availability %></td>
         <td><%= s.contributors %></td>
         <td><%= s.pi %></td>

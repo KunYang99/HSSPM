@@ -1,0 +1,34 @@
+<div class="header-choc">
+  <h3><i class='glyphicon glyphicon-lock'></i> <%= @irb.number %></h3>
+</div>
+
+<table class='table table-bordered'>
+  <tr class='info'>
+    <th>Study Name</th>
+    <th>PI</th>
+    <th>URL</th>
+    <th>Note</th>
+  </tr>
+  <tr>
+    <td><%= @irb.name %></td>
+    <td><%= @irb.pi %></td>
+    <td><% if @irb.address %><%= link_to @irb.address, @irb.address, :target => "_blank" %><% else %>&nbsp;<% end %></td>
+    <td><%= @irb.note %></td>
+  </tr>
+</table>
+
+<hr />
+<p><%= link_to clinic_irb_path(@irb, format: "csv") do %><i class='glyphicon glyphicon-download-alt'></i> Download subjects<% end %></p>
+<div id='input-box'>
+  <%= form_for_filterrific @filterrific do |f| %>
+    Search <%= f.text_field :search_query, class: 'filterrific-periodically-observed' %>
+  &nbsp;&nbsp;&nbsp;Status <%= f.select :with_status, @filterrific.select_options[:with_status], {include_blank: '- Any -'} %>
+&nbsp;&nbsp;&nbsp;Population <%= f.select :with_population, @filterrific.select_options[:with_population], {include_blank: '- Any -'} %>
+&nbsp;&nbsp;&nbsp;Gender <%= f.select :with_gender, @filterrific.select_options[:with_gender], {include_blank: '- Any -'} %>
+  &nbsp;&nbsp;&nbsp;Race <%= f.select :with_race, @filterrific.select_options[:with_race], {include_blank: '- Any -'} %>
+&nbsp;&nbsp;&nbsp;<%= link_to 'Reset filters', reset_filterrific_url %>
+<% end %>
+</div>
+
+<br />
+<%= render partial: "subject_table", locals: {subject_list: @subjects } %> 

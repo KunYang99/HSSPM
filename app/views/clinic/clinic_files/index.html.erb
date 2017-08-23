@@ -1,0 +1,28 @@
+<div class="header-choc">
+  <h3><i class='glyphicon glyphicon-duplicate'></i> Files</h3>
+</div>
+
+<p><%= link_to 'Add a new file', new_clinic_clinic_file_path %></p>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped table-condensed">
+    <tr class='info'>
+      <th>Title</th>
+      <th>File</th>
+      <th>Description</th>
+      <th>&nbsp;</th>
+    </tr>
+
+    <% @clinic_files.each do |clinic_file| %>
+      <tr>
+        <td><%= clinic_file.title %></td>
+        <td><%= link_to clinic_file.file_identifier, clinic_file.file.url %></td>
+        <td><%= clinic_file.note %></td>
+        <td>
+          <%= link_to edit_clinic_clinic_file_path(clinic_file.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %>
+          <%= link_to clinic_clinic_file_path(clinic_file), :data => {:confirm => 'Want to delete this clinic file?'}, :method => :delete do %><span class='glyphicon glyphicon-trash'></span><% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+

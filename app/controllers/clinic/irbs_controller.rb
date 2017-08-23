@@ -9,6 +9,27 @@ class Clinic::IrbsController < ApplicationController
 
   def show
     @irb = Irb.find(params[:id])
+    
+    @filterrific = initialize_filterrific(
+      @irb.humen,
+      params[:filterrific],
+      :select_options => {
+        with_status: Status.options_for_select,
+        with_population: Population.options_for_select,
+        with_gender: Gender.options_for_select,
+        with_race: Race.options_for_select
+      }
+    ) or return
+    @subjects = @filterrific.find.page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=human_subjects_of_#{@irb.number}.csv"
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
 
   def new

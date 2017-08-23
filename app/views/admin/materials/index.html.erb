@@ -15,7 +15,7 @@
 
     <% @materials.each do |material| %>
       <tr>
-        <td><%= link_to material.title, material.file.url %></td>
+        <td><%= material.title %></td>
         <td><%= link_to material.file_identifier, material.file.url %></td>
         <td><%= material.note %></td>
         <td>

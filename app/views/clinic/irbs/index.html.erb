@@ -7,14 +7,16 @@
     <th>Study Number</th>
     <th>Study Name</th>
     <th>PI</th>
+    <th>URL</th>
     <th>Note</th>
     <th>&nbsp;</th>
   </tr>
   <% @irbs.each do |i| %>
     <tr>
-      <td><%= i.number %></td>
+      <td><%= link_to i.number, clinic_irb_path(i) %></td>
       <td><%= i.name %></td>
       <td><%= i.pi %></td>
+      <td><% if i.address %><%= link_to i.address, i.address, :target => "_blank" %><% else %>&nbsp;<% end %></td>
       <td><%= i.note %></td>
       <td><%= link_to edit_clinic_irb_path(i) do %><i class='glyphicon glyphicon-pencil'></i><% end %></td>
       </tr>

@@ -1,0 +1,12 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-plus'></i> Add a new file</h3>
+</div>
+<%= simple_form_for([:clinic,@clinic_file], html: { multipart: true }) do |f| %>
+  <%= f.input :title, :input_html => { :class => :wd300 } %>
+  <%= f.input :note, :input_html => { :class => :wd300 } %>
+  <%= f.file_field :file %> 
+  
+  <br><%= recaptcha_tags %><br>
+
+  <%= f.button :submit, :class => 'btn btn-primary' %>
+<% end %>

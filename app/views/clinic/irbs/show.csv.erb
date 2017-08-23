@@ -1,0 +1,23 @@
+<%= CSV.generate do |csv|
+
+  csv << ['Status', 'ID', 'Other IDs', 'IRB Study', 'Gender', 'Race', 'Population', 'Note', 'Demographic data']
+
+  @irb.humen.each do |s|
+    new_row = []
+    new_row << s.status.try(:name)
+    new_row << s.accession
+    new_row << s.other_ids
+    new_row << s.to_irbs
+    new_row << s.gender.try(:name)
+    new_row << s.to_races
+    new_row << s.population.try(:name)
+    new_row << s.note
+    if s.demography.try(:data)
+      new_row << s.demography.data.gsub(/\r\n/, '; ') 
+    else
+      new_row << ''
+    end
+    csv << new_row
+  end
+
+end.html_safe %>

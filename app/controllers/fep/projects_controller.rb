@@ -24,6 +24,7 @@ class Fep::ProjectsController < ApplicationController
   end
 
   def search_results
+    @ops = ['Title', 'PI', 'Members']
     if params['key'] == 'Title'
       @projects = Project.where("name LIKE ?", "%%#{params['value']}%%")
     elsif params['key'] == 'PI'

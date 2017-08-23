@@ -2,13 +2,11 @@
   <h3><i class='glyphicon glyphicon-list-alt'></i> Search Results</h3>
 </div>
 
-<div align='center'>
-  <%= form_tag({:action => "search_results"}, :method => 'get') do %>
-    <%= select_tag :key, options_for_select(@ops, 'Subject ID') %> 
-    <%= text_field_tag :value %>
-    <%= submit_tag "Search", :class => 'btn btn-primary' %>
-  <% end %>
-</div>
+<%= form_tag({:action => "search_results"}, :method => 'get') do %>
+  <%= select_tag :key, options_for_select(@ops, 'Subject ID') %> 
+  <%= text_field_tag :value %>
+  <%= submit_tag "Search Again", :class => 'btn btn-primary' %>
+<% end %>
 <hr>
 
 <%= render partial: "search_table", locals: {dataset_list: @datasets } %> 

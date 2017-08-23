@@ -45,9 +45,9 @@ class Stock::HumanSamplesController < ApplicationController
     elsif params['key'] == 'Subject ID'
       @samples = HumanSample.joins(:visit => :human).where("humen.accession LIKE ?", "%%#{params['value']}%%")
     elsif params['key'] == 'Visit'
-      @samples = HumanSample.joins(:visit => :visit_type).where("visit_types.name LIKE ?", "%%#{params['value']}%%")
+      @samples = HumanSample.joins(:visit => :visit_type).where("visit_types.value LIKE ?", "%%#{params['value']}%%")
     elsif params['key'] == "Main Location"
-      @samples = HumanSample.where("main_location LIKE ?", "%%#{params['value']}%%")
+      @samples = HumanSample.joins(:main_location).where("main_locations.name LIKE ? OR main_locations.location LIKE ?", "%%#{params['value']}%%", "%%#{params['value']}%%")
     else
       @samples = HumanSample.where("note LIKE ?", "%%#{params['value']}%%")
     end

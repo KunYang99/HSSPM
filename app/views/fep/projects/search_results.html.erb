@@ -2,6 +2,14 @@
   <h3><i class='glyphicon glyphicon-object-align-bottom'></i> Search Results</h3>
 </div>
 
+<%= form_tag({:action => "search_results"}, :method => 'get') do %>
+  <%= select_tag :key, options_for_select(@ops, 'Title') %> 
+  <%= text_field_tag :value %>
+  <%= submit_tag "Search Again", :class => 'btn btn-primary' %>
+<% end %>
+<hr />
+
+<p><b><%= @projects.size %></b> projects found<p>
 <table class="table table-bordered table-striped table-condensed">
   <tr class='success'>
     <th>Title</th>
@@ -31,7 +39,7 @@
       <% if p.datasets.size == 0 %>
         <td>None</td>
       <% else %>
-        <td><%= 'View', project_path(p) %></td>
+        <td><%= link_to 'View', fep_project_path(p) %></td>
       <% end %>
     </tr>
   <% end %>

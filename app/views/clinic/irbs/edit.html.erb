@@ -1,10 +1,11 @@
-<div class="page-header">
+<div class="header-choc">
   <h3><i class='glyphicon glyphicon-pencil'></i> Add new IRB study</h3>
 </div>
 <%= simple_form_for([:clinic,@irb]) do |f| %>
   <%= f.input :number, :input_html => { :class => :wd300 }, :label => 'Study Number' %>
   <%= f.input :name, :input_html => { :class => :wd300 }, :label => 'Study Name' %>
   <%= f.input :pi, :input_html => { :class => :wd300 }, :label => 'PI' %>
+  <%= f.input :address, :input_html => { :class => :wd300 }, :label => 'URL' %>
   <%= f.input :note, :input_html => { :class => :wd300 } %>
   <%= recaptcha_tags %><br>
 

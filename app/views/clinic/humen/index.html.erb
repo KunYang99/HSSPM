@@ -1,8 +1,8 @@
-<div class="header-blue">
-  <h3><i class='glyphicon glyphicon-user'></i> Human Subjects</h3>
+<div class="header-choc">
+  <h3><i class='glyphicon glyphicon-user'></i><i class='glyphicon glyphicon-user'></i> Subjects</h3>
 </div>
 
-<p><%= link_to stock_humen_path(format: "csv") do %><i class='glyphicon glyphicon-download-alt'></i> Download all the human subjects<% end %></p>
+<p><%= link_to clinic_humen_path(format: "csv") do %><i class='glyphicon glyphicon-download-alt'></i> Download all the human subjects<% end %></p>
 
 <div id='input-box'>
   <%= form_for_filterrific @filterrific do |f| %>

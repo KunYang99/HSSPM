@@ -21,7 +21,7 @@ class Admin::HumenController < ApplicationController
     elsif params['key'] == 'Gender'
       @subjects = Human.joins(:gender).where("genders.name LIKE ?", "%%#{params['value']}%%")
     elsif params['key'] == 'Race'
-      @subjects = Human.joins(:race).where("races.name LIKE ?", "%%#{params['value']}%%")
+      @subjects = Human.joins(:races).where("races.name LIKE ?", "%%#{params['value']}%%")
     elsif params['key'] == 'Population'
       @subjects = Human.joins(:population).where("populations.name LIKE ?", "%%#{params['value']}%%")
     else

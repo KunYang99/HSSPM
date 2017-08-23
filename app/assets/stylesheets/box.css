@@ -6,6 +6,14 @@
 .panel-green .panel-body {
   background-color: #D1E8E2;
 }
+.panel-red .panel-heading {
+  background-color: #c94c4c;
+  color: #fff;
+  padding: 10px 5px 10px 10px;
+}
+.panel-red .panel-body {
+  background-color: #f9ebeb;
+}
 .panel-blue .panel-heading {
   background-color: #2b6785;
   color: #fff;

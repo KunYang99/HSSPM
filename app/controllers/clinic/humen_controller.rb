@@ -45,7 +45,7 @@ class Clinic::HumenController < ApplicationController
     elsif params['key'] == 'ID'
       @subjects = Human.where("accession LIKE ? OR other_ids LIKE ?", "%%#{params['value']}%%", "%%#{params['value']}%%")
     elsif params['key'] == 'IRB'
-      @subjects = Human.joins(:irbs).where("irbs.name LIKE ?", "%%#{params['value']}%%")
+      @subjects = Human.joins(:irbs).where("irbs.name LIKE ? OR irbs.number LIKE ?", "%%#{params['value']}%%", "%%#{params['value']}%%")
     elsif params['key'] == 'Gender'
       @subjects = Human.joins(:gender).where("genders.name LIKE ?", "%%#{params['value']}%%")
     elsif params['key'] == 'Race'

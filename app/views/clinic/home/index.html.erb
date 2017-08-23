@@ -7,12 +7,14 @@
     <div class='col-sm-6'>
       <div class="panel panel-grey2">
         <div class="panel-heading"><strong>Upcoming events</strong></div>
-        <div class="panel-body">
-          <ul>
-          <% @events.each do |e| %>
-            <li><%= e.start.strftime("%m/%d/%y") %> <%= link_to e.title, clinic_event_path(e) %></li>
+        <table class='table table-bordered'>
+        <% @events.each do |e| %>
+          <tr>
+            <td width='80px'><%= e.start.strftime("%m/%d/%y") %></td>
+            <td> <%= link_to e.title, clinic_event_path(e) %></td>
+          </tr>
           <% end %>
-        </div>
+        </table>
       </div>
     </div>
     

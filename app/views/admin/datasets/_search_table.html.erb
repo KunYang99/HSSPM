@@ -13,7 +13,7 @@
     <% dataset_list.each do |s| %>
       <tr>
         <td><%= s.human %></td>
-        <td><%= link_to s.title, s.file.url %></td>
+        <td><% unless s.file.blank? %><%= link_to s.file_identifier, s.file.url %><% else %>&nbsp;<% end %></td>
         <td><%= s.availability %></td>
         <td><%= s.contributors %></td>
         <td><%= s.pi %></td>

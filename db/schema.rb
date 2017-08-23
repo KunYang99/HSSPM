@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817183841) do
+ActiveRecord::Schema.define(version: 20170822152518) do
 
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20170817183841) do
     t.datetime "updated_at",      null: false
     t.index ["human_sample_id"], name: "index_carts_on_human_sample_id", using: :btree
     t.index ["user_id"], name: "index_carts_on_user_id", using: :btree
+  end
+
+  create_table "clinic_files", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "file"
+    t.text     "note",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "cohorts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -162,6 +170,7 @@ ActiveRecord::Schema.define(version: 20170817183841) do
     t.text     "note",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "url"
   end
 
   create_table "main_locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
