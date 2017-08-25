@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#create'
   get "/signout" => "sessions#destroy", :as => :signout
   get '/auth/failure' => 'sessions#failure'
+  get '/users/edit_password' => 'users#edit_password'
 
   resources :users
   resources :home
@@ -59,6 +60,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'home#index'
 
+    get '/users/edit_password' => 'users#edit_password'
+    
     get "/humen/batch_new" => "humen#batch_new"
     get "/humen/batch_edit" => "humen#batch_edit"
     post "/humen/batch_create" => "humen#batch_create"

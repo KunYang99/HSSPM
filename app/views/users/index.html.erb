@@ -16,5 +16,6 @@
   <dt>Groups</dt>
   <dd><%= current_user.to_groups %></dd>
 </dl>
-<%= link_to 'Edit', edit_user_path(current_user), :class => 'btn btn-primary' %>
+<%= link_to 'Edit your profile', edit_user_path(current_user), :class => 'btn btn-primary' %>
+<%= link_to 'Change Password', users_edit_password_path(current_user), :class => 'btn btn-primary' %>
 <br />

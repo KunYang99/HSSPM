@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def edit_password
+  end
+
   def update
     if verify_recaptcha(model: current_user) && current_user.update_attributes(user_params)
       redirect_to users_path, :notice => "Account updated."

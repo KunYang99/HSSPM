@@ -10,6 +10,10 @@ class Admin::UsersController < ApplicationController
     @disabled = User.disabled
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end
@@ -24,6 +28,10 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def edit_password
     @user = User.find(params[:id])
   end
 

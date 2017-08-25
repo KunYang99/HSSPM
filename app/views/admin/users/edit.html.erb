@@ -1,14 +1,12 @@
 <div class="page-header">
-  <h3><i class='glyphicon glyphicon-plus'></i> Edit member</h3>
+  <h3><i class='glyphicon glyphicon-plus'></i> Edit member profile</h3>
 </div>
 <%= simple_form_for([:admin,@user]) do |f| %>
   <%= f.input :name, :input_html => { :class => :wd300 } %>
-  <p>To enable log in with Goolge, please provide Google account </p>
+  <p>To enable log in with Goolge, please provide Google account. Leave it blank if Google Login is not allowed </p>
   <%= f.input :gmail, :input_html => { :class => :wd300 } %>
   <p>If enbale regular log in, please provide username and password </p>
   <%= f.input :username, :input_html => { :class => :wd300 } %>
-  <%= f.input :password, :input_html => { :class => :wd300 } %>
-  <%= f.input :password_confrim, :input_html => { :class => :wd300 } %>
   <%= f.input :email, :input_html => { :class => :wd300 } %>
 
   <%= f.association :groups, :as => :check_boxes %>
