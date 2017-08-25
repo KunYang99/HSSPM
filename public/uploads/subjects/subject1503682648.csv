@@ -1,0 +1,10 @@
+Status,ID,Other IDs,Cohort,Gender,Race,Population,Note
+Valid,Subject0001,"",cohortA,M,Asian,Control,""
+Valid,Subject0002,"",cohortB,F,AA,Patient,""
+Invalid,Subject0003,"",cohortA,M,Cauc,Patient,excluded due to not comply rules
+Valid,Subject0004,"",cohortB,F,AA,Control,""
+Valid,Subject0005,"",cohortA,M,Cauc,Patient,""
+Valid,Subject0006,"",cohortA,F,Asian,Control,""
+Valid,Subject0007,p124,"",F,AA,Patient,""
+Valid,Subject0008,"",cohortB,M,AA/Cauc,Patient,""
+

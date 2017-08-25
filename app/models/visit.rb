@@ -1,4 +1,7 @@
 class Visit < ApplicationRecord
+  
+  has_paper_trail ignore: [:updated_at, :created_at]
+  
   belongs_to :human
   belongs_to :visit_type
 

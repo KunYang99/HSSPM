@@ -1,0 +1,34 @@
+<div class="panel panel-info">
+  <div class="panel-heading"><strong>Basic Info</strong></div>
+  <table class='table table-bordered'>
+    <tr>
+      <th>Sample ID</th>
+      <th>Type</th>
+      <th>Subject ID</th>
+      <th>Visit</th>
+      <th>Original Amount</th>
+      <th>Available Amount</th>
+      <th>Concentration</th>
+      <th>Location</th>
+      <th>Source</th>
+      <th>Prepared by</th>
+      <th>Created on</th>
+      <th>Note</th>
+    </tr>
+
+    <tr>
+      <td><%= @sample.accession %></td>
+      <td><%= @sample.sample_type %></td>
+      <td><%= @sample.human %></td>
+      <td><%= @sample.visit.visit_type %></td>
+      <td><%= @sample.amount %></td>
+      <td><%= @sample.avail_amount %></td>
+      <td><%= @sample.concentration %></td>
+      <td><%= @sample.main_location %>: <%= @sample.sub_location %></td>
+      <td><%= @sample.source %></td>
+      <td><%= @sample.prepared_by %></td>
+      <td><%= @sample.created_on %></td>
+      <td><%= @sample.note %></td>
+    </tr>
+  </table>
+</div>

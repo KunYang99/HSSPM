@@ -1,0 +1,26 @@
+<div class="panel panel-info">
+  <div class="panel-heading"><strong>Basic Info</strong></div>
+  <table class='table table-bordered'>
+    <tr>
+      <th>Status</th>
+      <th>ID</th>
+      <th>Other IDs</th>
+      <th>Cohort</th>
+      <th>Gender</th>
+      <th>Race</th>
+      <th>Population</th>
+      <th>Note</th>
+    </tr>
+
+    <tr>
+      <td><%= @subject.status %></td>
+      <td><%= @subject.accession %></td>
+      <td><%= @subject.other_ids %></td>
+      <td><%= @subject.to_cohorts %></td>
+      <td><%= @subject.gender %></td>
+      <td><%= @subject.to_races %></td>
+      <td><%= @subject.population %></td>
+      <td><%= @subject.note %></td>
+    </tr>
+  </table>
+</div>

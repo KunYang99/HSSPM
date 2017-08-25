@@ -1,0 +1,19 @@
+<div class="panel panel-danger">
+  <div class="panel-heading"><b>Transfer History</b></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Transfer From</th>
+      <th>Transfer To</th>
+      <th>Amount</th>
+      <th>Note</th>
+    </tr>
+    <% @sample.transfers.each do |t| %>
+      <tr>
+        <td><%= t.trans_from %></td>
+        <td><%= t.trans_to %></td>
+        <td><%= t.amount %></td>
+        <td><%= t.note %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

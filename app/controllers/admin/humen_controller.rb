@@ -9,6 +9,10 @@ class Admin::HumenController < ApplicationController
     @subjects = Human.paginate(:page => params[:page], :per_page => 10).order('updated_at DESC')
   end
 
+  def show
+    @subject = Human.find(params[:id])
+  end
+
   def search_results
     @ops = ['Status', 'ID', 'Cohort', 'Gender', 'Race', 'Population', 'Note']
 

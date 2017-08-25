@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-time'></i> Modification History</h3>
+</div>
+
+<%= will_paginate @changes, :class => 'digg_pagination' %>
+<br />
+<table class="table table-bordered table-striped table-condensed">
+  <tr>
+    <th>Data</th>
+    <th>Type</th>
+    <th>Who made the change</th>
+    <th>When</th>
+    <th>What changed</th>
+  </tr>
+  <% @changes.each do |v| %>
+    <tr>
+      <td>
+        <% if v.item_type == 'Human' %>
+          <%= 'Human Subject' %>
+        <% elsif v.item_type == 'HumanSample' %>
+          <%= 'Human Sample' %>
+        <% elsif v.item_type == 'Demography' %>
+          <%= 'Demographic Data' %>
+        <% else %>
+          <%= v.item_type %>
+        <% end %>
+      </td>
+      <td><%= v.event %></td>
+      <td><%= User.find(v.whodunnit).name %></td>
+      <td><%= v.created_at %></td>
+      <% if v.event == 'create' %>
+        <td>new record added to HSSPM</td>
+      <% elsif v.event == 'update' %>
+        <td><%= v.object_changes %></td>
+      <% else %>
+        <td>&nbsp;</td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

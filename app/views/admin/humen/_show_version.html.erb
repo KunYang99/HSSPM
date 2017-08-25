@@ -1,0 +1,29 @@
+<div class="panel panel-success">
+  <div class="panel-heading"><strong>Modification History</strong></div>
+  <table class='table table-bordered'>
+    <tr>
+      <th>Type</th>
+      <th>Who made the change</th>
+      <th>When</th>
+      <th>What changed</th>
+    </tr>
+    <% this_data.versions.each do |v| %>
+      <tr>
+        <td><%= v.event %></td>
+        <td><%= User.find(v.whodunnit).name %></td>
+        <td><%= v.created_at %></td>
+        <% if v.event == 'create' %>
+          <td>new record added to HSSPM</td>
+        <% elsif v.event == 'update' %>
+          <% c = []; v.changeset.each do |k, v| %>
+            <% next if v[0].blank? and v[1].blank? %>
+            <% c << "#{k}: #{v[0]} => #{v[1]}" %>
+          <% end %>
+          <td><%= c.join('; ') %></td>
+        <% else %>
+          <td>&nbsp;</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

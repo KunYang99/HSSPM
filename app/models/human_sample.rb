@@ -1,4 +1,7 @@
 class HumanSample < ApplicationRecord
+  
+  has_paper_trail ignore: [:updated_at, :created_at]
+  
   belongs_to :sample_type
   belongs_to :main_location
   belongs_to :visit

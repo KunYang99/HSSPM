@@ -1,0 +1,18 @@
+<div class="panel panel-info">
+  <div class="panel-heading"><strong>Basic Info</strong></div>
+  <table class="table table-bordered table-striped table-condensed">
+    <tr>
+      <th>Leader</th>
+      <th>Members</th>
+      <th>Progress</th>
+      <th>Description</th>
+    </tr>
+
+    <tr>
+      <td><%= @project.PI %></td>
+      <td><%= @project.members %></td>
+      <td><%= @project.progress %>%</td>
+      <td><%= @project.description %></td>
+    </tr>
+  </table>
+</div>

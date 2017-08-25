@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822152518) do
+ActiveRecord::Schema.define(version: 20170825163126) do
 
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -170,7 +170,7 @@ ActiveRecord::Schema.define(version: 20170822152518) do
     t.text     "note",       limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.string   "url"
+    t.string   "address"
   end
 
   create_table "main_locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -249,6 +249,17 @@ ActiveRecord::Schema.define(version: 20170822152518) do
     t.string   "username"
   end
 
+  create_table "versions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string   "item_type",      limit: 191,        null: false
+    t.integer  "item_id",                           null: false
+    t.string   "event",                             null: false
+    t.string   "whodunnit"
+    t.text     "object",         limit: 4294967295
+    t.datetime "created_at"
+    t.text     "object_changes", limit: 4294967295
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  end
+
   create_table "visit_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "value"
     t.datetime "created_at", null: false
@@ -268,6 +279,4 @@ ActiveRecord::Schema.define(version: 20170822152518) do
     t.index ["visit_type_id"], name: "index_visits_on_visit_type_id", using: :btree
   end
 
-  add_foreign_key "demographies", "humen"
-  add_foreign_key "transfers", "human_samples"
 end

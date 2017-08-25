@@ -1,0 +1,6 @@
+Sample ID,Type,Subject ID,Visit Type,Original Amount,Available Amount,Concentration,Main Location,Sub Location,Source,Prepared_by,Created_on,Note
+Subject0001_1_WB_1,WB,Subject0001,1st visit,10 uL,10 uL,,lab -80 freezer,box D - slot 2,,John,2017-08-15,
+Subject0002_1_Plasma_5,Plasma,Subject0002,1st visit,10 uL,10 uL,,Core facility,tube 123,,,2017-08-16,
+Subject0004_1_DNA_2,DNA,Subject0004,1st visit,15 uL,15 uL,2 nM,lab -80 freezer,box A - slot 5,WB,Mary,2017-08-15,
+Subject0004_2_Plasma_4,Plasma,Subject0004,2nd visit,15 uL,15 uL,,Core facility,tube 114,,,2017-08-15,
+Subject0006_1_PBMC_3,PBMC,Subject0006,1st visit,5 uL,5 uL,,Core facility,tube 257,,,2017-08-15,

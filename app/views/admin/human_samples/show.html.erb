@@ -1,0 +1,13 @@
+<div class="page-header">
+  <h3><i class='glyphicon glyphicon-tint'></i><i class='glyphicon glyphicon-user'></i> <%= @sample.accession %></h3>
+</div>
+
+<p>
+<%= link_to 'Edit', edit_admin_human_sample_path(@sample) %>
+| <%= link_to 'Add a Transfer', new_admin_transfer_path(:human_sample_id => @sample.id) %>
+| <%= link_to 'Delete', admin_human_sample_path(@sample), :data => {:confirm => 'Want to delete this sample?'}, :method => :delete %>
+</p>
+
+<%= render partial: "show_sample" %> 
+<%= render partial: "show_transfer" %> 
+<%= render partial: "show_version", locals: {this_data: @sample } %> 

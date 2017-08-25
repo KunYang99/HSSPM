@@ -10,17 +10,15 @@
       <th>Members</th>
       <th>Progress</th>
       <th>Description</th>
-      <th>&nbsp;</th>
     </tr>
 
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.name %></td>
+        <td><%= link_to project.name, admin_project_path(project) %></td>
         <td><%= project.PI %></td>
         <td><%= project.members %></td>
         <td><%= project.progress %>%</td>
         <td><%= project.description %></td>
-        <td><%= link_to edit_admin_project_path(project.id) do %><span class='glyphicon glyphicon-pencil'></span><% end %></td>
       </tr>
     <% end %>
   </table>

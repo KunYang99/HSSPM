@@ -1,4 +1,7 @@
 class Human < ApplicationRecord
+  
+  has_paper_trail ignore: [:updated_at, :created_at]
+  
   belongs_to :population
   belongs_to :gender
   belongs_to :status

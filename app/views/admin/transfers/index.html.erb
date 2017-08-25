@@ -27,7 +27,7 @@
 
     <% @transfers.each do |transfer| %>
       <tr>
-        <td><%= transfer.human_sample %></td>
+        <td><%= link_to transfer.human_sample, admin_human_sample_path(transfer.human_sample) %></td>
         <td><%= transfer.trans_from %></td>
         <td><%= transfer.trans_to %></td>
         <td><%= transfer.amount %></td>

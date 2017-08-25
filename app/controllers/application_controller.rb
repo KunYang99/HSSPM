@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :is_valid_session?
+  before_action :set_paper_trail_whodunnit
 
   helper_method :current_user
   helper_method :get_model_error_message

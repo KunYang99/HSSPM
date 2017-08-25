@@ -6,8 +6,8 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.7.18)
-# Database: hsspm_tmp
-# Generation Time: 2017-08-23 15:14:58 +0000
+# Database: hsspm_dev
+# Generation Time: 2017-08-25 18:17:05 +0000
 # ************************************************************
 
 
@@ -548,7 +548,9 @@ VALUES
 	('20170817163943'),
 	('20170817183841'),
 	('20170822150134'),
-	('20170822152518');
+	('20170822152518'),
+	('20170825151948'),
+	('20170825163126');
 
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -617,6 +619,26 @@ VALUES
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Dump of table versions
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `versions`;
+
+CREATE TABLE `versions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_type` varchar(191) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `event` varchar(255) NOT NULL,
+  `whodunnit` varchar(255) DEFAULT NULL,
+  `object` longtext,
+  `created_at` datetime DEFAULT NULL,
+  `object_changes` longtext,
+  PRIMARY KEY (`id`),
+  KEY `index_versions_on_item_type_and_item_id` (`item_type`,`item_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 
 # Dump of table visit_types

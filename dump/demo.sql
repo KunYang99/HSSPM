@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.18)
 # Database: hsspm_dev
-# Generation Time: 2017-08-23 15:07:12 +0000
+# Generation Time: 2017-08-25 18:15:30 +0000
 # ************************************************************
 
 
@@ -142,11 +142,20 @@ LOCK TABLES `cohorts_humen` WRITE;
 INSERT INTO `cohorts_humen` (`human_id`, `cohort_id`)
 VALUES
 	(1,1),
+	(1,1),
+	(2,2),
 	(2,2),
 	(3,1),
+	(3,1),
+	(4,2),
 	(4,2),
 	(5,1),
-	(6,1);
+	(5,1),
+	(6,1),
+	(6,1),
+	(7,1),
+	(8,2),
+	(8,2);
 
 /*!40000 ALTER TABLE `cohorts_humen` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -221,8 +230,7 @@ CREATE TABLE `demographies` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `index_demographies_on_human_id` (`human_id`),
-  CONSTRAINT `fk_rails_2825a7f9c7` FOREIGN KEY (`human_id`) REFERENCES `humen` (`id`)
+  KEY `index_demographies_on_human_id` (`human_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `demographies` WRITE;
@@ -230,13 +238,11 @@ LOCK TABLES `demographies` WRITE;
 
 INSERT INTO `demographies` (`id`, `human_id`, `data`, `created_at`, `updated_at`)
 VALUES
-	(3,1,'height: 74 inches\r\nweight: 120 lbs','2017-08-17 17:59:21','2017-08-17 18:15:08'),
-	(4,2,'Height: 68 inches\r\nWeight: 130 lbs\r\nEducation: 12 years\r\nHandedness: right\r\nPhysical condition: high blood pressure\r\nSmoking?: Yes\r\nPack per day: 2\r\nCurrent medication: none\r\nPast medication: Aspirin\r\nFamily History: Unknown\r\nReferral: Dr. XXX\r\nDate of diagnosis: 2017-XX-XX','2017-08-17 18:35:16','2017-08-17 18:36:53'),
-	(5,4,'Height: 70 inches\r\nWeight: 150lbs\r\nHandedness: left\r\nSmoke?: No\r\nFamily History: Father, diabetes\r\nCurrent medication: none\r\nPast medication: none','2017-08-17 19:07:59','2017-08-17 19:07:59'),
-	(6,7,'Height: 60 inches\r\nWeight: 180 lbs','2017-08-17 19:28:27','2017-08-17 19:28:27'),
-	(7,5,'','2017-08-22 15:38:26','2017-08-22 15:38:26'),
-	(8,6,'','2017-08-22 15:38:46','2017-08-22 15:38:46'),
-	(9,3,'','2017-08-22 15:39:10','2017-08-22 15:39:10');
+	(1,1,'height: 74 inches\r\nweight: 120 lbs','2017-08-25 18:04:21','2017-08-25 18:04:21'),
+	(2,2,'Height: 68 inches\r\nWeight: 130 lbs\r\nEducation: 12 years\r\nHandedness: right\r\nPhysical condition: high blood pressure\r\nSmoking?: Yes\r\nPack per day: 2\r\nCurrent medication: none\r\nPast medication: Aspirin\r\nFamily History: Unknown\r\nReferral: Dr. XXX\r\nDate of diagnosis: 2017-XX-XX','2017-08-25 18:05:09','2017-08-25 18:05:09'),
+	(3,4,'Height: 70 inches\r\nWeight: 150lbs\r\nHandedness: left\r\nSmoke?: No\r\nFamily History: Father, diabetes\r\nCurrent medication: none\r\nPast medication: none','2017-08-25 18:06:02','2017-08-25 18:06:02'),
+	(4,7,'Height: 60 inches\r\nWeight: 180 lbs','2017-08-25 18:06:34','2017-08-25 18:06:34'),
+	(5,8,'Height: 68 inches\r\nWeight: 140 lbs\r\nHandedness: right\r\nPhysical condition: diabetes\r\nSmoking?: Yes\r\nPack per day: 0.5\r\nCurrent medication: none\r\nPast medication: Aspirin\r\nFamily History: Unknown\r\nDate of diagnosis: 2016-01-05','2017-08-25 18:09:12','2017-08-25 18:09:12');
 
 /*!40000 ALTER TABLE `demographies` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -409,8 +415,10 @@ VALUES
 	(1,1),
 	(1,2),
 	(2,2),
+	(2,3),
 	(4,2),
-	(5,2);
+	(5,2),
+	(5,3);
 
 /*!40000 ALTER TABLE `groups_users` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -448,11 +456,11 @@ LOCK TABLES `human_samples` WRITE;
 
 INSERT INTO `human_samples` (`id`, `sample_type_id`, `visit_id`, `amount`, `created_on`, `main_location_id`, `sub_location`, `source`, `prepared_by`, `created_at`, `updated_at`, `note`, `accession`, `concentration`, `avail_amount`)
 VALUES
-	(1,1,1,'10 uL','2017-08-15',2,NULL,'','John','2017-08-15 19:49:07','2017-08-15 19:49:07','','Subject0001_1_WB_1','','10 uL'),
-	(2,3,4,'','2017-08-15',2,NULL,'WB','Mary','2017-08-15 19:50:28','2017-08-15 19:50:28','','Subject0004_1_DNA_2','2 nM',''),
-	(3,4,6,'5 uL','2017-08-15',1,NULL,'','','2017-08-15 19:51:31','2017-08-15 19:51:31','','Subject0006_1_PBMC_3','','5 uL'),
-	(4,2,9,'15 uL','2017-08-15',1,NULL,'','','2017-08-15 19:52:24','2017-08-15 19:54:04','','Subject0004_2_Plasma_4','','5 uL'),
-	(5,2,2,'10 uL','2017-08-16',1,NULL,'','','2017-08-16 17:58:26','2017-08-16 17:58:26','','Subject0002_1_Plasma_5','','10 uL');
+	(1,1,1,'10 uL','2017-08-15',2,'box D - slot 2',NULL,'John','2017-08-25 17:50:14','2017-08-25 17:50:14',NULL,'Subject0001_1_WB_1',NULL,'10 uL'),
+	(2,2,2,'10 uL','2017-08-16',1,'tube 123',NULL,NULL,'2017-08-25 17:50:14','2017-08-25 17:50:14',NULL,'Subject0002_1_Plasma_5',NULL,'10 uL'),
+	(3,3,6,'15 uL','2017-08-15',2,'box A - slot 5','WB','Mary','2017-08-25 17:50:14','2017-08-25 17:50:14',NULL,'Subject0004_1_DNA_2','2 nM','15 uL'),
+	(4,2,7,'15 uL','2017-08-15',1,'tube 114','','','2017-08-25 17:50:14','2017-08-25 18:00:15','','Subject0004_2_Plasma_4','','5 uL'),
+	(5,4,9,'5 uL','2017-08-15',1,'tube 257',NULL,NULL,'2017-08-25 17:50:14','2017-08-25 17:50:14',NULL,'Subject0006_1_PBMC_3',NULL,'5 uL');
 
 /*!40000 ALTER TABLE `human_samples` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -484,13 +492,14 @@ LOCK TABLES `humen` WRITE;
 
 INSERT INTO `humen` (`id`, `accession`, `other_ids`, `population_id`, `gender_id`, `note`, `status_id`, `created_at`, `updated_at`)
 VALUES
-	(1,'Subject0001','',2,1,'',1,'2017-08-15 19:05:50','2017-08-15 19:10:24'),
-	(2,'Subject0002','',1,2,'',1,'2017-08-15 19:06:21','2017-08-15 19:06:21'),
-	(3,'Subject0003','',1,1,'excluded due to not comply rules',2,'2017-08-15 19:07:53','2017-08-15 19:07:53'),
-	(4,'Subject0004','',2,2,'',1,'2017-08-15 19:08:26','2017-08-15 19:08:26'),
-	(5,'Subject0005','',1,1,'',1,'2017-08-15 19:11:03','2017-08-15 19:11:03'),
-	(6,'Subject0006','',2,2,'',1,'2017-08-15 19:11:34','2017-08-15 19:11:34'),
-	(7,'Subject0007','p124',1,2,'',1,'2017-08-17 19:28:27','2017-08-17 19:28:27');
+	(1,'Subject0001','',2,1,'',1,'2017-08-25 17:38:48','2017-08-25 18:04:21'),
+	(2,'Subject0002','',1,2,'',1,'2017-08-25 17:38:48','2017-08-25 18:05:09'),
+	(3,'Subject0003',NULL,1,1,'excluded due to not comply rules',2,'2017-08-25 17:38:48','2017-08-25 17:38:48'),
+	(4,'Subject0004','',2,2,'',1,'2017-08-25 17:38:48','2017-08-25 18:06:02'),
+	(5,'Subject0005',NULL,1,1,NULL,1,'2017-08-25 17:38:48','2017-08-25 17:38:48'),
+	(6,'Subject0006',NULL,2,2,NULL,1,'2017-08-25 17:38:48','2017-08-25 17:38:48'),
+	(7,'Subject0007','',1,2,'',1,'2017-08-25 17:38:48','2017-08-25 18:06:34'),
+	(8,'Subject0008','',1,1,'',1,'2017-08-25 17:38:48','2017-08-25 18:09:12');
 
 /*!40000 ALTER TABLE `humen` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -518,7 +527,8 @@ VALUES
 	(4,1),
 	(5,1),
 	(6,2),
-	(7,2);
+	(7,2),
+	(8,2);
 
 /*!40000 ALTER TABLE `humen_irbs` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -541,12 +551,23 @@ LOCK TABLES `humen_races` WRITE;
 INSERT INTO `humen_races` (`human_id`, `race_id`)
 VALUES
 	(1,1),
+	(1,1),
+	(2,2),
 	(2,2),
 	(3,3),
+	(3,3),
+	(4,2),
 	(4,2),
 	(5,3),
+	(5,3),
 	(6,1),
-	(7,2);
+	(6,1),
+	(7,2),
+	(7,2),
+	(8,2),
+	(8,2),
+	(8,3),
+	(8,3);
 
 /*!40000 ALTER TABLE `humen_races` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -682,12 +703,12 @@ LOCK TABLES `projects` WRITE;
 
 INSERT INTO `projects` (`id`, `name`, `description`, `PI`, `members`, `created_at`, `updated_at`, `progress`)
 VALUES
-	(1,'RNA-Seq project','Study the gene expression changes between patients and controls','Tom','Mary, John','2017-08-15 20:33:41','2017-08-15 20:33:41',30),
-	(2,'MRI project','Study the brain volume changes during disease development','Tom','Jack, Sarah','2017-08-15 20:36:21','2017-08-15 20:36:21',80),
-	(3,'Serum study','Study the protein concentration changes between patients and controls','Tom','Hong, bety','2017-08-15 20:39:07','2017-08-15 20:39:07',50),
-	(4,'Metabolome Project','','Tom','Lucy, Robert','2017-08-16 15:42:12','2017-08-16 15:42:12',100),
-	(5,'fcMRI','Study functional interactions between brain regions','James','Ann, Emma','2017-08-16 15:45:21','2017-08-16 15:45:21',100),
-	(6,'Chip-Seq project','','Tom','Mary','2017-08-22 16:03:46','2017-08-22 16:03:46',10);
+	(1,'RNA-Seq project','Study the gene expression changes between patients and controls','Tom','Mary, John,Ben','2017-08-25 17:51:51','2017-08-25 17:51:51',30),
+	(2,'MRI project','Study the brain volume changes during disease development','Tom','Jack, Sarah','2017-08-25 17:52:34','2017-08-25 17:52:34',80),
+	(3,'Serum study','Study the protein concentration changes between patients and controls','Tom','Hong, bety','2017-08-25 17:53:10','2017-08-25 17:53:10',50),
+	(4,'Metabolome Project','','Tom','Lucy, Robert','2017-08-25 17:54:42','2017-08-25 17:54:42',100),
+	(5,'fcMRI','Study functional interactions between brain regions','James','Ann, Emma','2017-08-25 17:55:31','2017-08-25 17:55:31',100),
+	(6,'Chip-Seq project','','Tom','Mary,John','2017-08-25 17:56:05','2017-08-25 18:10:44',10);
 
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -802,7 +823,9 @@ VALUES
 	('20170817163943'),
 	('20170817183841'),
 	('20170822150134'),
-	('20170822152518');
+	('20170822152518'),
+	('20170825151948'),
+	('20170825163126');
 
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -849,8 +872,7 @@ CREATE TABLE `transfers` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `index_transfers_on_human_sample_id` (`human_sample_id`),
-  CONSTRAINT `fk_rails_efa90ac8d3` FOREIGN KEY (`human_sample_id`) REFERENCES `human_samples` (`id`)
+  KEY `index_transfers_on_human_sample_id` (`human_sample_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `transfers` WRITE;
@@ -887,9 +909,86 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `name`, `gmail`, `phone`, `email`, `password_digest`, `created_at`, `updated_at`, `username`)
 VALUES
-	(2,'root','',NULL,'','$2a$10$yqZWNj.NPo7Ydp6Jtknhsu3BD5viDq2mICwhIS9rBKQ7osnPqr6ni','2017-08-15 17:58:02','2017-08-15 17:58:02','root');
+	(2,'root','test@gmail.com','','','$2a$10$wgRIJVrYxfqdGQ/Uyg4mU.3hKcsvtqIcNMT9jSMGvcsmXr2JJ03qa','2017-08-15 17:58:02','2017-08-25 15:13:25','root'),
+	(3,'Clinical RA','',NULL,'','$2a$10$woDeITn9uYLEAPWtKp3lzOwJQCagJRvDc1Uz/bJUzRD2qq7VfPlTC','2017-08-25 17:42:31','2017-08-25 17:42:31','ra');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table versions
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `versions`;
+
+CREATE TABLE `versions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_type` varchar(191) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `event` varchar(255) NOT NULL,
+  `whodunnit` varchar(255) DEFAULT NULL,
+  `object` longtext,
+  `created_at` datetime DEFAULT NULL,
+  `object_changes` longtext,
+  PRIMARY KEY (`id`),
+  KEY `index_versions_on_item_type_and_item_id` (`item_type`,`item_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `versions` WRITE;
+/*!40000 ALTER TABLE `versions` DISABLE KEYS */;
+
+INSERT INTO `versions` (`id`, `item_type`, `item_id`, `event`, `whodunnit`, `object`, `created_at`, `object_changes`)
+VALUES
+	(1,'Human',1,'create','2',NULL,'2017-08-25 17:38:48','---\nid:\n- \n- 1\naccession:\n- \n- Subject0001\npopulation_id:\n- \n- 2\ngender_id:\n- \n- 1\nstatus_id:\n- \n- 1\n'),
+	(2,'Human',2,'create','2',NULL,'2017-08-25 17:38:48','---\nid:\n- \n- 2\naccession:\n- \n- Subject0002\npopulation_id:\n- \n- 1\ngender_id:\n- \n- 2\nstatus_id:\n- \n- 1\n'),
+	(3,'Human',3,'create','2',NULL,'2017-08-25 17:38:48','---\nid:\n- \n- 3\naccession:\n- \n- Subject0003\npopulation_id:\n- \n- 1\ngender_id:\n- \n- 1\nnote:\n- \n- excluded due to not comply rules\nstatus_id:\n- \n- 2\n'),
+	(4,'Human',4,'create','2',NULL,'2017-08-25 17:38:48','---\nid:\n- \n- 4\naccession:\n- \n- Subject0004\npopulation_id:\n- \n- 2\ngender_id:\n- \n- 2\nstatus_id:\n- \n- 1\n'),
+	(5,'Human',5,'create','2',NULL,'2017-08-25 17:38:48','---\nid:\n- \n- 5\naccession:\n- \n- Subject0005\npopulation_id:\n- \n- 1\ngender_id:\n- \n- 1\nstatus_id:\n- \n- 1\n'),
+	(6,'Human',6,'create','2',NULL,'2017-08-25 17:38:48','---\nid:\n- \n- 6\naccession:\n- \n- Subject0006\npopulation_id:\n- \n- 2\ngender_id:\n- \n- 2\nstatus_id:\n- \n- 1\n'),
+	(7,'Human',7,'create','2',NULL,'2017-08-25 17:38:48','---\nid:\n- \n- 7\naccession:\n- \n- Subject0007\nother_ids:\n- \n- p124\npopulation_id:\n- \n- 1\ngender_id:\n- \n- 2\nstatus_id:\n- \n- 1\n'),
+	(8,'Human',8,'create','2',NULL,'2017-08-25 17:38:48','---\nid:\n- \n- 8\naccession:\n- \n- Subject0008\npopulation_id:\n- \n- 1\ngender_id:\n- \n- 1\nstatus_id:\n- \n- 1\n'),
+	(9,'Visit',1,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 1\nhuman_id:\n- \n- 1\nvisit_type_id:\n- \n- 1\nage:\n- \n- 23\n'),
+	(10,'Visit',2,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 2\nhuman_id:\n- \n- 2\nvisit_type_id:\n- \n- 1\ndiagnosis:\n- \n- disease A\nage:\n- \n- 32\n'),
+	(11,'Visit',3,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 3\nhuman_id:\n- \n- 2\nvisit_type_id:\n- \n- 2\ndiagnosis:\n- \n- disease A\nage:\n- \n- 33\n'),
+	(12,'Visit',4,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 4\nhuman_id:\n- \n- 3\nvisit_type_id:\n- \n- 1\ndiagnosis:\n- \n- disease A\nnote:\n- \n- didn\'t get blood draw\nage:\n- \n- 22\n'),
+	(13,'Visit',5,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 5\nhuman_id:\n- \n- 3\nvisit_type_id:\n- \n- 2\ndiagnosis:\n- \n- disease A\nage:\n- \n- 23\n'),
+	(14,'Visit',6,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 6\nhuman_id:\n- \n- 4\nvisit_type_id:\n- \n- 1\nage:\n- \n- 18\n'),
+	(15,'Visit',7,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 7\nhuman_id:\n- \n- 4\nvisit_type_id:\n- \n- 2\nage:\n- \n- 19\n'),
+	(16,'Visit',8,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 8\nhuman_id:\n- \n- 5\nvisit_type_id:\n- \n- 1\ndiagnosis:\n- \n- disease A\nage:\n- \n- 20\n'),
+	(17,'Visit',9,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 9\nhuman_id:\n- \n- 6\nvisit_type_id:\n- \n- 1\nage:\n- \n- 34\n'),
+	(18,'Visit',10,'create','2',NULL,'2017-08-25 17:41:31','---\nid:\n- \n- 10\nhuman_id:\n- \n- 7\nvisit_type_id:\n- \n- 1\ndiagnosis:\n- \n- Disease A\nage:\n- \n- 26\n'),
+	(19,'HumanSample',1,'create','2',NULL,'2017-08-25 17:50:14','---\nid:\n- \n- 1\nsample_type_id:\n- \n- 1\nvisit_id:\n- \n- 1\namount:\n- \n- 10 uL\ncreated_on:\n- \n- 2017-08-15\nmain_location_id:\n- \n- 2\nsub_location:\n- \n- box D - slot 2\nprepared_by:\n- \n- John\naccession:\n- \n- Subject0001_1_WB_1\navail_amount:\n- \n- 10 uL\n'),
+	(20,'HumanSample',2,'create','2',NULL,'2017-08-25 17:50:14','---\nid:\n- \n- 2\nsample_type_id:\n- \n- 2\nvisit_id:\n- \n- 2\namount:\n- \n- 10 uL\ncreated_on:\n- \n- 2017-08-16\nmain_location_id:\n- \n- 1\nsub_location:\n- \n- tube 123\naccession:\n- \n- Subject0002_1_Plasma_5\navail_amount:\n- \n- 10 uL\n'),
+	(21,'HumanSample',3,'create','2',NULL,'2017-08-25 17:50:14','---\nid:\n- \n- 3\nsample_type_id:\n- \n- 3\nvisit_id:\n- \n- 6\namount:\n- \n- 15 uL\ncreated_on:\n- \n- 2017-08-15\nmain_location_id:\n- \n- 2\nsub_location:\n- \n- box A - slot 5\nsource:\n- \n- WB\nprepared_by:\n- \n- Mary\naccession:\n- \n- Subject0004_1_DNA_2\nconcentration:\n- \n- 2 nM\navail_amount:\n- \n- 15 uL\n'),
+	(22,'HumanSample',4,'create','2',NULL,'2017-08-25 17:50:14','---\nid:\n- \n- 4\nsample_type_id:\n- \n- 2\nvisit_id:\n- \n- 7\namount:\n- \n- 15 uL\ncreated_on:\n- \n- 2017-08-15\nmain_location_id:\n- \n- 1\nsub_location:\n- \n- tube 114\naccession:\n- \n- Subject0004_2_Plasma_4\navail_amount:\n- \n- 15 uL\n'),
+	(23,'HumanSample',5,'create','2',NULL,'2017-08-25 17:50:14','---\nid:\n- \n- 5\nsample_type_id:\n- \n- 4\nvisit_id:\n- \n- 9\namount:\n- \n- 5 uL\ncreated_on:\n- \n- 2017-08-15\nmain_location_id:\n- \n- 1\nsub_location:\n- \n- tube 257\naccession:\n- \n- Subject0006_1_PBMC_3\navail_amount:\n- \n- 5 uL\n'),
+	(24,'Project',1,'create','2',NULL,'2017-08-25 17:51:51','---\nid:\n- \n- 1\nname:\n- \n- RNA-Seq project\ndescription:\n- \n- Study the gene expression changes between patients and controls\nPI:\n- \n- Tom\nmembers:\n- \n- Mary, John,Ben\nprogress:\n- \n- 30\n'),
+	(25,'Project',2,'create','2',NULL,'2017-08-25 17:52:34','---\nid:\n- \n- 2\nname:\n- \n- MRI project\ndescription:\n- \n- Study the brain volume changes during disease development\nPI:\n- \n- Tom\nmembers:\n- \n- Jack, Sarah\nprogress:\n- \n- 80\n'),
+	(26,'Project',3,'create','2',NULL,'2017-08-25 17:53:10','---\nid:\n- \n- 3\nname:\n- \n- Serum study\ndescription:\n- \n- Study the protein concentration changes between patients and controls\nPI:\n- \n- Tom\nmembers:\n- \n- Hong, bety\nprogress:\n- \n- 50\n'),
+	(27,'Project',4,'create','2',NULL,'2017-08-25 17:54:42','---\nid:\n- \n- 4\nname:\n- \n- Metabolome Project\ndescription:\n- \n- \'\'\nPI:\n- \n- Tom\nmembers:\n- \n- Lucy, Robert\nprogress:\n- \n- 100\n'),
+	(28,'Project',5,'create','2',NULL,'2017-08-25 17:55:31','---\nid:\n- \n- 5\nname:\n- \n- fcMRI\ndescription:\n- \n- Study functional interactions between brain regions\nPI:\n- \n- James\nmembers:\n- \n- Ann, Emma\nprogress:\n- \n- 100\n'),
+	(29,'Project',6,'create','2',NULL,'2017-08-25 17:56:05','---\nid:\n- \n- 6\nname:\n- \n- Chip-Seq project\ndescription:\n- \n- \'\'\nPI:\n- \n- Tom\nmembers:\n- \n- Mary\nprogress:\n- \n- 10\n'),
+	(30,'HumanSample',4,'update','2','---\nid: 4\nsample_type_id: 2\nvisit_id: 7\namount: 15 uL\ncreated_on: 2017-08-15\nmain_location_id: 1\nsub_location: tube 114\nsource: \nprepared_by: \ncreated_at: 2017-08-25 17:50:14.000000000 Z\nupdated_at: 2017-08-25 17:50:14.000000000 Z\nnote: \naccession: Subject0004_2_Plasma_4\nconcentration: \navail_amount: 15 uL\n','2017-08-25 18:00:15','---\navail_amount:\n- 15 uL\n- 5 uL\nconcentration:\n- \n- \'\'\nsource:\n- \n- \'\'\nprepared_by:\n- \n- \'\'\nnote:\n- \n- \'\'\n'),
+	(31,'Human',1,'update','3','---\nid: 1\naccession: Subject0001\nother_ids: \npopulation_id: 2\ngender_id: 1\nnote: \nstatus_id: 1\ncreated_at: 2017-08-25 17:38:48.000000000 Z\nupdated_at: 2017-08-25 17:38:48.000000000 Z\n','2017-08-25 18:04:21','---\nother_ids:\n- \n- \'\'\nnote:\n- \n- \'\'\n'),
+	(32,'Demography',1,'create','3',NULL,'2017-08-25 18:04:21','---\nid:\n- \n- 1\nhuman_id:\n- \n- 1\ndata:\n- \n- \"height: 74 inches\\r\\nweight: 120 lbs\"\n'),
+	(33,'Visit',1,'update','3','---\nid: 1\nhuman_id: 1\nvisit_type_id: 1\ndiagnosis: \nnote: \ncreated_at: 2017-08-25 17:41:31.000000000 Z\nupdated_at: 2017-08-25 17:41:31.000000000 Z\nage: 23\nvisit_date: \n','2017-08-25 18:04:21','---\ndiagnosis:\n- \n- \'\'\nnote:\n- \n- \'\'\n'),
+	(34,'Human',2,'update','3','---\nid: 2\naccession: Subject0002\nother_ids: \npopulation_id: 1\ngender_id: 2\nnote: \nstatus_id: 1\ncreated_at: 2017-08-25 17:38:48.000000000 Z\nupdated_at: 2017-08-25 17:38:48.000000000 Z\n','2017-08-25 18:05:09','---\nother_ids:\n- \n- \'\'\nnote:\n- \n- \'\'\n'),
+	(35,'Demography',2,'create','3',NULL,'2017-08-25 18:05:09','---\nid:\n- \n- 2\nhuman_id:\n- \n- 2\ndata:\n- \n- \"Height: 68 inches\\r\\nWeight: 130 lbs\\r\\nEducation: 12 years\\r\\nHandedness: right\\r\\nPhysical\n  condition: high blood pressure\\r\\nSmoking?: Yes\\r\\nPack per day: 2\\r\\nCurrent medication:\n  none\\r\\nPast medication: Aspirin\\r\\nFamily History: Unknown\\r\\nReferral: Dr. XXX\\r\\nDate\n  of diagnosis: 2017-XX-XX\"\n'),
+	(36,'Visit',2,'update','3','---\nid: 2\nhuman_id: 2\nvisit_type_id: 1\ndiagnosis: disease A\nnote: \ncreated_at: 2017-08-25 17:41:31.000000000 Z\nupdated_at: 2017-08-25 17:41:31.000000000 Z\nage: 32\nvisit_date: \n','2017-08-25 18:05:09','---\nnote:\n- \n- \'\'\n'),
+	(37,'Visit',3,'update','3','---\nid: 3\nhuman_id: 2\nvisit_type_id: 2\ndiagnosis: disease A\nnote: \ncreated_at: 2017-08-25 17:41:31.000000000 Z\nupdated_at: 2017-08-25 17:41:31.000000000 Z\nage: 33\nvisit_date: \n','2017-08-25 18:05:09','---\nnote:\n- \n- \'\'\n'),
+	(38,'Human',4,'update','3','---\nid: 4\naccession: Subject0004\nother_ids: \npopulation_id: 2\ngender_id: 2\nnote: \nstatus_id: 1\ncreated_at: 2017-08-25 17:38:48.000000000 Z\nupdated_at: 2017-08-25 17:38:48.000000000 Z\n','2017-08-25 18:06:02','---\nother_ids:\n- \n- \'\'\nnote:\n- \n- \'\'\n'),
+	(39,'Demography',3,'create','3',NULL,'2017-08-25 18:06:02','---\nid:\n- \n- 3\nhuman_id:\n- \n- 4\ndata:\n- \n- \"Height: 70 inches\\r\\nWeight: 150lbs\\r\\nHandedness: left\\r\\nSmoke?: No\\r\\nFamily\n  History: Father, diabetes\\r\\nCurrent medication: none\\r\\nPast medication: none\"\n'),
+	(40,'Visit',6,'update','3','---\nid: 6\nhuman_id: 4\nvisit_type_id: 1\ndiagnosis: \nnote: \ncreated_at: 2017-08-25 17:41:31.000000000 Z\nupdated_at: 2017-08-25 17:41:31.000000000 Z\nage: 18\nvisit_date: \n','2017-08-25 18:06:02','---\ndiagnosis:\n- \n- \'\'\nnote:\n- \n- \'\'\n'),
+	(41,'Visit',7,'update','3','---\nid: 7\nhuman_id: 4\nvisit_type_id: 2\ndiagnosis: \nnote: \ncreated_at: 2017-08-25 17:41:31.000000000 Z\nupdated_at: 2017-08-25 17:41:31.000000000 Z\nage: 19\nvisit_date: \n','2017-08-25 18:06:02','---\ndiagnosis:\n- \n- \'\'\nnote:\n- \n- \'\'\n'),
+	(42,'Human',7,'update','3','---\nid: 7\naccession: Subject0007\nother_ids: p124\npopulation_id: 1\ngender_id: 2\nnote: \nstatus_id: 1\ncreated_at: 2017-08-25 17:38:48.000000000 Z\nupdated_at: 2017-08-25 17:38:48.000000000 Z\n','2017-08-25 18:06:34','---\nother_ids:\n- p124\n- \'\'\nnote:\n- \n- \'\'\n'),
+	(43,'Demography',4,'create','3',NULL,'2017-08-25 18:06:34','---\nid:\n- \n- 4\nhuman_id:\n- \n- 7\ndata:\n- \n- \"Height: 60 inches\\r\\nWeight: 180 lbs\"\n'),
+	(44,'Visit',10,'update','3','---\nid: 10\nhuman_id: 7\nvisit_type_id: 1\ndiagnosis: Disease A\nnote: \ncreated_at: 2017-08-25 17:41:31.000000000 Z\nupdated_at: 2017-08-25 17:41:31.000000000 Z\nage: 26\nvisit_date: \n','2017-08-25 18:06:34','---\nnote:\n- \n- \'\'\n'),
+	(45,'Human',8,'update','3','---\nid: 8\naccession: Subject0008\nother_ids: \npopulation_id: 1\ngender_id: 1\nnote: \nstatus_id: 1\ncreated_at: 2017-08-25 17:38:48.000000000 Z\nupdated_at: 2017-08-25 17:38:48.000000000 Z\n','2017-08-25 18:09:12','---\nother_ids:\n- \n- \'\'\nnote:\n- \n- \'\'\n'),
+	(46,'Demography',5,'create','3',NULL,'2017-08-25 18:09:12','---\nid:\n- \n- 5\nhuman_id:\n- \n- 8\ndata:\n- \n- \"Height: 68 inches\\r\\nWeight: 140 lbs\\r\\nHandedness: right\\r\\nPhysical condition:\n  diabetes\\r\\nSmoking?: Yes\\r\\nPack per day: 0.5\\r\\nCurrent medication: none\\r\\nPast\n  medication: Aspirin\\r\\nFamily History: Unknown\\r\\nDate of diagnosis: 2016-01-05\"\n'),
+	(47,'Visit',11,'create','3',NULL,'2017-08-25 18:09:12','---\nid:\n- \n- 11\nhuman_id:\n- \n- 8\nvisit_type_id:\n- \n- 2\ndiagnosis:\n- \n- disease C\nnote:\n- \n- \'\'\nage:\n- \n- 34\nvisit_date:\n- \n- 2016-03-02\n'),
+	(48,'Project',6,'update','2','---\nid: 6\nname: Chip-Seq project\ndescription: \'\'\nPI: Tom\nmembers: Mary\ncreated_at: 2017-08-25 17:56:05.000000000 Z\nupdated_at: 2017-08-25 17:56:05.000000000 Z\nprogress: 10\n','2017-08-25 18:10:44','---\nmembers:\n- Mary\n- Mary,John\n');
+
+/*!40000 ALTER TABLE `versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -943,16 +1042,17 @@ LOCK TABLES `visits` WRITE;
 
 INSERT INTO `visits` (`id`, `human_id`, `visit_type_id`, `diagnosis`, `note`, `created_at`, `updated_at`, `age`, `visit_date`)
 VALUES
-	(1,1,1,'','','2017-08-15 19:43:11','2017-08-17 19:29:42',23,NULL),
-	(2,2,1,'disease A','','2017-08-15 19:43:11','2017-08-22 15:37:46',32,NULL),
-	(3,3,1,'disease A','didn\'t get blood draw','2017-08-15 19:43:11','2017-08-15 19:43:11',22,NULL),
-	(4,4,1,'','','2017-08-15 19:43:11','2017-08-17 19:07:59',18,'2016-06-06'),
-	(5,5,1,'disease A','','2017-08-15 19:43:11','2017-08-22 15:38:26',20,NULL),
-	(6,6,1,'','','2017-08-15 19:43:11','2017-08-17 19:17:13',34,'2015-04-09'),
-	(7,2,2,'disease A','','2017-08-15 19:43:11','2017-08-22 15:37:46',33,NULL),
-	(8,3,2,'disease A','','2017-08-15 19:43:11','2017-08-22 15:39:10',23,NULL),
-	(9,4,2,'','','2017-08-15 19:43:11','2017-08-17 19:07:59',19,'2017-07-01'),
-	(10,7,1,'Disease A','','2017-08-17 19:28:27','2017-08-17 19:28:27',26,'2017-08-13');
+	(1,1,1,'','','2017-08-25 17:41:31','2017-08-25 18:04:21',23,NULL),
+	(2,2,1,'disease A','','2017-08-25 17:41:31','2017-08-25 18:05:09',32,NULL),
+	(3,2,2,'disease A','','2017-08-25 17:41:31','2017-08-25 18:05:09',33,NULL),
+	(4,3,1,'disease A','didn\'t get blood draw','2017-08-25 17:41:31','2017-08-25 17:41:31',22,NULL),
+	(5,3,2,'disease A',NULL,'2017-08-25 17:41:31','2017-08-25 17:41:31',23,NULL),
+	(6,4,1,'','','2017-08-25 17:41:31','2017-08-25 18:06:02',18,NULL),
+	(7,4,2,'','','2017-08-25 17:41:31','2017-08-25 18:06:02',19,NULL),
+	(8,5,1,'disease A',NULL,'2017-08-25 17:41:31','2017-08-25 17:41:31',20,NULL),
+	(9,6,1,NULL,NULL,'2017-08-25 17:41:31','2017-08-25 17:41:31',34,NULL),
+	(10,7,1,'Disease A','','2017-08-25 17:41:31','2017-08-25 18:06:34',26,NULL),
+	(11,8,2,'disease C','','2017-08-25 18:09:12','2017-08-25 18:09:12',34,'2016-03-02');
 
 /*!40000 ALTER TABLE `visits` ENABLE KEYS */;
 UNLOCK TABLES;

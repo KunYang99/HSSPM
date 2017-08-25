@@ -99,7 +99,7 @@ Rails.application.routes.draw do
 
     resources :home
     resources :users
-    resources :groups
+    resources :versions
     resources :humen
     resources :statuses
     resources :populations

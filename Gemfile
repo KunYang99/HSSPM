@@ -49,6 +49,9 @@ gem "omniauth-google-oauth2"
 gem 'bcrypt', '~> 3.1.7'
 gem "recaptcha", require: "recaptcha/rails"
 
+# track changes
+gem 'paper_trail'
+
 # uploading
 gem 'carrierwave', '~> 1.0'
 

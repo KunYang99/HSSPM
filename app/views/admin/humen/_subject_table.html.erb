@@ -11,7 +11,6 @@
       <th>Race</th>
       <th>Population</th>
       <th>Note</th>
-      <th>&nbsp;</th>
     </tr>
 
     <% subject_list.each do |s| %>
@@ -21,19 +20,13 @@
           <tr>
           <% end %>
           <td><%= s.status %></td>
-          <td><%= s.accession %></td>
+          <td><%= link_to s.accession, admin_human_path(s) %></td>
           <td><%= s.other_ids %></td>
           <td><%= s.to_cohorts %></td>
           <td><%= s.gender %></td>
           <td><%= s.to_races %></td>
           <td><%= s.population %></td>
           <td><%= s.note %></td>
-          <td>
-            <%= link_to edit_admin_human_path(s) do %><span class='glyphicon glyphicon-pencil'></span><% end %>
-            <% if s.visits.size == 0 %>
-            <%= link_to admin_human_path(s), :data => {:confirm => 'Want to delete this subject?'}, :method => :delete do %><span class='glyphicon glyphicon-trash'></span><% end %>
-          <% end %>
-          </td>
           </tr>
         <% end %>
   </table>

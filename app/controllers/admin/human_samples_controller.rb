@@ -9,6 +9,10 @@ class Admin::HumanSamplesController < ApplicationController
     @samples = HumanSample.paginate(:page => params[:page], :per_page => 10).order('updated_at DESC')
   end
 
+  def show
+    @sample = HumanSample.find(params[:id])
+  end
+
   def search_results
     @ops = ['Sample ID', 'Type', 'Subject ID', 'Visit', 'Main Location', 'Note']
 
@@ -35,7 +39,7 @@ class Admin::HumanSamplesController < ApplicationController
   def create
     @human_sample = HumanSample.new(human_sample_params)
     if verify_recaptcha(model: @human_sample) && @human_sample.save
-      return redirect_to admin_human_samples_path, notice: 'New human_sample added!'
+      return redirect_to admin_human_sample_path(@human_sample)
     else 
       return render :new
     end       
@@ -49,7 +53,7 @@ class Admin::HumanSamplesController < ApplicationController
     @human_sample = HumanSample.find(params[:id])
 
     if verify_recaptcha(model: @human_sample) && @human_sample.update_attributes(human_sample_params)
-      redirect_to admin_human_samples_path, :notice => "Information updated."
+      redirect_to admin_human_sample_path(@human_sample), :notice => "Information updated."
     else
       render :edit
     end
