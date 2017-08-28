@@ -6,7 +6,7 @@ class Admin::UsersController < ApplicationController
     @admin = User.admin
     @sample_users = User.sample_db
     @clinic_users = User.clinic
-    @fep_users = User.fep
+    @project_users = User.project
     @disabled = User.disabled
   end
 

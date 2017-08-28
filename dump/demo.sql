@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.18)
 # Database: hsspm_dev
-# Generation Time: 2017-08-25 18:15:30 +0000
+# Generation Time: 2017-08-25 20:36:20 +0000
 # ************************************************************
 
 
@@ -142,19 +142,12 @@ LOCK TABLES `cohorts_humen` WRITE;
 INSERT INTO `cohorts_humen` (`human_id`, `cohort_id`)
 VALUES
 	(1,1),
-	(1,1),
-	(2,2),
 	(2,2),
 	(3,1),
-	(3,1),
-	(4,2),
 	(4,2),
 	(5,1),
-	(5,1),
-	(6,1),
 	(6,1),
 	(7,1),
-	(8,2),
 	(8,2);
 
 /*!40000 ALTER TABLE `cohorts_humen` ENABLE KEYS */;
@@ -551,22 +544,13 @@ LOCK TABLES `humen_races` WRITE;
 INSERT INTO `humen_races` (`human_id`, `race_id`)
 VALUES
 	(1,1),
-	(1,1),
-	(2,2),
 	(2,2),
 	(3,3),
-	(3,3),
-	(4,2),
 	(4,2),
 	(5,3),
-	(5,3),
-	(6,1),
 	(6,1),
 	(7,2),
-	(7,2),
 	(8,2),
-	(8,2),
-	(8,3),
 	(8,3);
 
 /*!40000 ALTER TABLE `humen_races` ENABLE KEYS */;

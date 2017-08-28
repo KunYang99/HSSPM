@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   scope :admin, -> {joins(:groups).where("groups.name LIKE ?", 'admin')}
   scope :sample_db, -> {joins(:groups).where("groups.name LIKE ?", 'sample')}
-  scope :fep, -> {joins(:groups).where("groups.name LIKE ?", 'FEP')}
+  scope :project, -> {joins(:groups).where("groups.name LIKE ?", 'project')}
   scope :clinic, -> {joins(:groups).where("groups.name LIKE ?", 'clinic')}
   scope :disabled, -> {joins(:groups).where("groups.name LIKE ?", 'disabled')}
 

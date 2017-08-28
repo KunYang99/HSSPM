@@ -2,7 +2,6 @@
   <table class="table table-bordered table-striped table-condensed" id='my-table'>
     <thead>
       <tr class='success'>
-        <th>&nbsp;</th>
         <th>Status</th>
         <th>ID</th>
         <th>Other IDs</th>
@@ -21,15 +20,8 @@
           <% else %>
             <tr>
             <% end %>
-            <td>
-              <% if current_user.has_fav_subject?(s.id) %>
-                <span class="glyphicon glyphicon-heart" style='color:red;'></span>
-              <% else %>
-                <%= link_to stock_favorites_path(:user_id => current_user.id, :subject_id => s.id, :type => 'subject'), :method => :post do%><span class='glyphicon glyphicon-heart'></span><% end %>
-              <% end %>
-            </td>
             <td><%= s.status %></td>
-            <td><%= link_to s.accession, stock_human_path(s) %></td>
+            <td><%= link_to s.accession, clinic_human_path(s) %></td>
             <td><%= s.other_ids %></td>
             <td><%= s.to_cohorts %></td>
             <td><%= s.gender %></td>

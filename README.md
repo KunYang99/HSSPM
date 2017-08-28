@@ -12,9 +12,15 @@ HSSPM is a light-weighted data management system designed specifically for clini
 * Secure. Proteced by passwords. And reCAPCHA is inplemented to prevent spam and abuse.
 * No messup. Changes to data are recorded: who, when, which data, and what changed.
 
+Watch our video on YouTube:
+[![What is HSSPM](https://github.com/KunYang99/images/blob/master/youtube_what_is_HSSPM.png)](https://youtu.be/yhh4-7SyqtI)
+
 ## How to install
 * [Amazon instance](https://github.com/KunYang99/HSSPM/wiki/Install-on-Amazon-instance)
 * [Linux or MacOS](https://github.com/KunYang99/HSSPM/wiki/Install-on-Linux-or-Mac)
 
 ## How to use
 Please check [wiki](https://github.com/KunYang99/HSSPM/wiki)
+
+Watch our tutorial video on YouTube:
+[![How to use HSSPM to manage your research](https://github.com/KunYang99/images/blob/master/youtube_usage.png)](https://youtu.be/FrIfjA7B2zI)

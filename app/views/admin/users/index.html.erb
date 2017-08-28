@@ -9,7 +9,7 @@
     <li role="presentation" class="active"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Administrators</a></li>
     <li role="presentation"><a href="#sample" aria-controls="sample" role="tab" data-toggle="tab">Sample DB Members</a></li>
     <li role="presentation"><a href="#clinic" aria-controls="clinic" role="tab" data-toggle="tab">Clinical DB Members</a></li>
-    <li role="presentation"><a href="#fep" aria-controls="fep" role="tab" data-toggle="tab">FEP DB Members</a></li>
+    <li role="presentation"><a href="#fep" aria-controls="fep" role="tab" data-toggle="tab">Project Members</a></li>
     <li role="presentation"><a href="#inactive" aria-controls="inactive" role="tab" data-toggle="tab">Previous Members</a></li>
   </ul>
 
@@ -25,7 +25,7 @@
       <%= render partial: "user_table", locals: {user_list: @clinic_users} %> 
     </div>
     <div role="tabpanel" class="tab-pane" id="fep">
-      <%= render partial: "user_table", locals: {user_list: @fep_users} %> 
+      <%= render partial: "user_table", locals: {user_list: @project_users} %> 
     </div>
     <div role="tabpanel" class="tab-pane" id="inactive">
       <%= render partial: "user_table", locals: {user_list: @disabled} %> 
