@@ -17,7 +17,11 @@ Watch our video on YouTube:
 
 ## How to install
 * [Amazon instance](https://github.com/KunYang99/HSSPM/wiki/Install-on-Amazon-instance)
+
+  Watch YouTube tutorial: [https://youtu.be/T-3BSwrwMrQ](https://youtu.be/T-3BSwrwMrQ)
 * [Linux or MacOS](https://github.com/KunYang99/HSSPM/wiki/Install-on-Linux-or-Mac)
+
+  Watch YouTube tutorial: [https://youtu.be/RvSlEvd2HqE](https://youtu.be/RvSlEvd2HqE)
 
 ## How to use
 Please check [wiki](https://github.com/KunYang99/HSSPM/wiki)
