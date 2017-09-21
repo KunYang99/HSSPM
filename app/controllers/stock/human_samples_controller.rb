@@ -67,11 +67,17 @@ class Stock::HumanSamplesController < ApplicationController
   def batch_search_results
     @value = params['subjects']
     @key = params['type']
+    @no_data = []
 
     @samples = []
     params['subjects'].split("\r\n").each do |sub|
       sub.strip!
-      @samples += HumanSample.joins(:visit => :human).where("(humen.accession LIKE ? OR humen.other_ids LIKE ?) AND human_samples.sample_type_id = ?", sub, "%%#{sub}%%", params['type'])
+      re = HumanSample.joins(:visit => :human).where("(humen.accession LIKE ? OR humen.other_ids LIKE ?) AND human_samples.sample_type_id = ?", sub, "%%#{sub}%%", params['type'])
+      if re.size == 0
+        @no_data << sub
+      else
+        @samples += re
+      end
     end
     
     respond_to do |format|

@@ -1,5 +1,7 @@
 class Dataset < ApplicationRecord
 
+  has_paper_trail ignore: [:updated_at, :created_at]
+
   mount_uploader :file, DatasetUploader
 
   belongs_to :human

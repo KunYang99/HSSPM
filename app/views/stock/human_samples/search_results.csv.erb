@@ -1,6 +1,6 @@
 <%= CSV.generate do |csv|
 
-  csv << ['Sample ID', 'Type', 'Subject ID', 'Visit', 'Original Amount', 'Available Amount', 'Concentration', 'Location', 'Source', 'Prepared by', 'Created on', 'Note']
+  csv << ['Sample ID', 'Type', 'Subject ID', 'Visit Type', 'Original Amount', 'Available Amount', 'Concentration', 'Main Location', 'Sub Location', 'Source', 'Prepared_by', 'Created_on', 'Note']
 
   @samples.each do |s|
     new_row = []
@@ -11,7 +11,8 @@
     new_row << s.amount
     new_row << s.avail_amount
     new_row << s.concentration
-    new_row << "#{s.main_location}: #{s.sub_location}"
+    new_row << s.main_location
+    new_row << s.sub_location
     new_row << s.source
     new_row << s.prepared_by
     new_row << s.created_on

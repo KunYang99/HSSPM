@@ -1,4 +1,7 @@
 class Gender < ApplicationRecord
+
+  has_paper_trail ignore: [:updated_at, :created_at]
+
   has_many :humen
 
   validates :name, uniqueness: { case_sensitive: false }, presence: true

@@ -1,4 +1,7 @@
 class SampleType < ApplicationRecord
+
+  has_paper_trail ignore: [:updated_at, :created_at]
+
   has_many :human_samples
 
   validates :name, uniqueness: { case_sensitive: false }, presence: true

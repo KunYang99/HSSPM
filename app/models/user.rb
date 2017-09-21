@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  has_paper_trail ignore: [:updated_at, :created_at]
+
   has_and_belongs_to_many :groups
   has_many :carts
   has_many :fav_samples

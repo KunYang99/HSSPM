@@ -1,0 +1,12 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-record'></i> Search Results</h3>
+</div>
+
+<% if @no_data.size == 0 %>
+  <p>Found all the subjects</p>
+<% else %>
+  <p class='text-danger'>Subjects not found: <%= @no_data.join(', ') %></p>
+<% end %>
+<p><b><%= @subjects.count %></b> records found! &nbsp;&nbsp;| &nbsp;&nbsp;<%= link_to stock_humen_batch_search_results_path(format: "csv", :subjects => @value, :type => @key) do %><i class='glyphicon glyphicon-download-alt'></i> Download search results<% end %></p>
+
+<%= render partial: "search_table", locals: {subject_list: @subjects } %> 

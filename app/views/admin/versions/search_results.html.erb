@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3><i class='glyphicon glyphicon-time'></i> Modification History</h3>
+  <h3><i class='glyphicon glyphicon-time'></i> Search Results</h3>
 </div>
 
 <div align='center'>
@@ -11,8 +11,7 @@
 </div>
 <hr>
 
-<%= will_paginate @changes, :class => 'digg_pagination' %>
-<br />
+<p><b><%= @data.size %></b> records found</p>
 <table class="table table-bordered table-striped table-condensed">
   <tr>
     <th>Data</th>
@@ -21,7 +20,7 @@
     <th>When</th>
     <th>What changed</th>
   </tr>
-  <% @changes.each do |v| %>
+  <% @data.each do |v| %>
     <tr>
       <td>
         <% if v.item_type == 'Human' %>

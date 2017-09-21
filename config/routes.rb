@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get "/human_samples/search_results" => "human_samples#search_results"
     get "/human_samples/batch_search" => "human_samples#batch_search"
     get "/human_samples/batch_search_results" => "human_samples#batch_search_results"
+    get "/humen/batch_search" => "humen#batch_search"
+    get "/humen/batch_search_results" => "humen#batch_search_results"
     get "/datasets/search_results" => "datasets#search_results"
     get "/visits/search_results" => "visits#search_results"
 
@@ -96,6 +98,7 @@ Rails.application.routes.draw do
     get "/transfers/search_results" => "transfers#search_results"
     
     get "/datasets/search_results" => "datasets#search_results"
+    get "/versions/search_results" => "versions#search_results"
 
     resources :home
     resources :users

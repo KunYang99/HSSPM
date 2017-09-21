@@ -1,0 +1,14 @@
+<div class="header-blue">
+  <h3><i class='glyphicon glyphicon-record'></i> Batch Search</h3>
+</div>
+
+<%= form_tag({:action => "batch_search_results"}, :method => 'get') do %>
+  <p><b>Input a list of subject</b></p>
+  <table>
+    <tr>
+      <td><%= text_area_tag(:subjects, "", :size => "50x10")%></td>
+      <td>One subject per line<br />e.g.<br />Subject0001<br />Subject0004<br />Subject0006</td>
+    </tr>
+  </table>
+  <p><%= submit_tag 'Search', class: 'btn btn-primary' %></p>
+<% end %>

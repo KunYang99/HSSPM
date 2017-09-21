@@ -65,4 +65,30 @@ class Stock::HumenController < ApplicationController
     end
   end
 
+  def batch_search
+  end
+
+  def batch_search_results
+    @value = params['subjects']
+    @no_data = []
+
+    @subjects = []
+    params['subjects'].split("\r\n").each do |sub|
+      sub.strip!
+      re = Human.where("accession LIKE ? OR other_ids LIKE ?", sub, "%%#{sub}%%")
+      if re.size == 0
+        @no_data << sub
+      else
+        @subjects += re
+      end
+    end
+    
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=human_subject_search_results.csv"
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
+  end
 end

@@ -1,4 +1,7 @@
 class VisitType < ApplicationRecord
+
+  has_paper_trail ignore: [:updated_at, :created_at]
+
   has_many :visits
 
   validates :value, uniqueness: { case_sensitive: false }, presence: true
