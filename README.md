@@ -3,6 +3,9 @@
 mCard is a light-weighted data management system designed specifically for translational research and precision medicine.
 
 ## Features
+
+<img align="right" src="https://github.com/windMe99/images/blob/master/mCard_figure.png" width=60%>
+
 * Integrate clinical study and basic science research
 * Specially designed to meet the habit and intuition of clinical researchers and wet-lab scientists.
 * No learning or programming kownledge needed
@@ -10,8 +13,6 @@ mCard is a light-weighted data management system designed specifically for trans
 * Group-based user access control. Protect sensitive data from the public and members without approval.
 * Secure. Proteced by passwords. And reCAPCHA is inplemented to prevent spam and abuse.
 * No messup. Changes to data are recorded: who, when, which data, and what changed.
-
-![mCard](https://github.com/windMe99/images/blob/master/mCard_figure.png)
 
 ## How to install
 * [Amazon instance](https://github.com/KunYang99/mCard/wiki/Install-on-Amazon-instance)
