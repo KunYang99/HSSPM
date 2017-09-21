@@ -11,8 +11,7 @@ mCard is a light-weighted data management system designed specifically for trans
 * Secure. Proteced by passwords. And reCAPCHA is inplemented to prevent spam and abuse.
 * No messup. Changes to data are recorded: who, when, which data, and what changed.
 
-Watch our video on YouTube:
-[![What is mCard](https://github.com/KunYang99/images/blob/master/youtube_what_is_HSSPM.png)](https://youtu.be/yhh4-7SyqtI)
+[[https://github.com/windMe99/images/blob/master/mCard_figure.png]]
 
 ## How to install
 * [Amazon instance](https://github.com/KunYang99/mCard/wiki/Install-on-Amazon-instance)
